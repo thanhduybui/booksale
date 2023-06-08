@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <section th:fragment="copy"
+             class="header margin-bottom-sm">
+      <div class="search-bar grid header-grid">
+        <button class="btn-mobile-nav">
+          <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+          <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+        </button>
+        <div class="header-left">
+          <a href="@{/}" class="logo"
+          ><span class="header-logo">BOOKSALE</span></a
+          >
+        </div>
+
+        <form action="#" class="search-form">
+          <label for="search-input" class="search-icon"
+          ><ion-icon name="search"></ion-icon
+          ></label>
+          <input
+                  type="text"
+                  id="search-input"
+                  class="margin-right-sm"
+                  placeholder="Tìm kiếm sách..."
+          />
+          <button class="btn btn--full btn--search">search</button>
+        </form>
+
+        <nav class="main-nav">
+          <button class="btn-search-mobile">
+            <ion-icon name="search" class="search-icon"></ion-icon>
+          </button>
+          <ul class="main-nav-list">
+            <li class="main-nav-item">
+              <a href="cart.html" class="cart header-link"
+              ><ion-icon class="cart-icon" name="cart-sharp"></ion-icon
+              ></a>
+            </li>
+            <li class="main-nav-item">
+              <a th:href="@{/login}" class="header-link">Đăng nhập</a>
+            </li>
+            <li class="main-nav-item dropdown hide">
+              <a class="user header-link dropdown-toggle" href="#"
+              ><img
+                      class="profile-img"
+                      th:src="@{/imgs/user.png}"
+                      alt="User's profile photo"
+              /></a>
+              <ul class="user-list dropdown-menu">
+                <li>
+                  <a class="user-list__link" href="#">Thông tin cá nhân</a>
+                </li>
+                <li><a class="user-list__link" href="#">Đổi mật khẩu</a></li>
+                <li><a class="user-list__link" href="#">Đăng xuất</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <nav class="navigation">
+        <div class="container">
+          <ul class="nav-list">
+            <li class="dropdown">
+              <a href="#" class="nav-link dropdown-toggle">Danh mục</a>
+              <ul class="category-dropdown dropdown-menu">
+                <li>
+                  <a class="category-link" href="book.html"
+                  >Tiểu thuyết - văn học</a
+                  >
+                </li>
+                <li><a class="category-link" href="#">Sách kinh tế</a></li>
+                <li><a class="category-link" href="#">Sách khoa học</a></li>
+                <li><a class="category-link" href="#">Sách self-help</a></li>
+                <li>
+                  <a class="category-link" href="#">Sách tâm lí tội phạm</a>
+                </li>
+                <li><a class="category-link" href="#">Sách thiếu nhi</a></li>
+                <li><a class="category-link" href="#">Sách bán chạy</a></li>
+                <li><a class="category-link" href="#">Sách mới</a></li>
+              </ul>
+            </li>
+            <li><a href="#" class="nav-link">Sách mới</a></li>
+            <li><a href="#" class="nav-link">Sách bán chạy</a></li>
+            <li><a href="#" class="nav-link">Sản phẩm nổi bật</a></li>
+            <li><a href="#" class="nav-link">Sách giảm giá</a></li>
+          </ul>
+        </div>
+      </nav>
+    </section>
+
+</body>
+</html>

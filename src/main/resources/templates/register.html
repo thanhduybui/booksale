@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{ common/head.html :: common_header(~{::title},~{::link}) }">
+      <title>Register | Page</title>
+
+      <link rel="stylesheet" th:href="@{/css/authentication.css}" >
+
+    </head>
+  <body>
+    <!-- HEADER -->
+    <header th:insert="~{common/header.html :: copy}"></header>
+
+    <!-- MAIN CONTENT -->
+    <main class="authen-section">
+      <div class="authen-container">
+        <div class="authen-nav margin-bottom-lg">
+          <ul class="authen-nav__list">
+            <li class="authen-nav__item">
+              <a class="authen-nav__link login" th:href="@{/login}">Đăng nhập</a>
+            </li>
+            <li class="authen-nav__item open">
+              <a class="authen-nav__link register" th:href=@{/register}>Đăng ký</a>
+            </li>
+          </ul>
+        </div>
+        <div class="authen-body__register">
+          <h3 class="heading-tertiary login-heading">Đăng ký tài khoản</h3>
+          <form class="authen-form">
+            <div class="form-control">
+              <label class="margin-bottom-sm" for="username"
+                >Tên đăng nhập</label
+              >
+              <input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="HongBeBong"
+              />
+            </div>
+
+            <div class="form-control">
+              <label class="margin-bottom-sm" for="password"
+                >Mật khẩu mới</label
+              >
+              <input type="password" name="password" id="password" />
+            </div>
+
+            <div class="form-control">
+              <label class="margin-bottom-sm" for="confirm-password"
+                >Nhập lại mật khẩu</label
+              >
+              <input
+                type="password"
+                name="confirmPassword"
+                id="confirm-password"
+              />
+            </div>
+
+            <button class="btn btn--radius center">Đăng ký</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer th:replace="~{common/footer.html :: copy}"></footer>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
