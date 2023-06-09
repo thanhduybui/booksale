@@ -1,6 +1,7 @@
 package com.ecommerce.booksale.entity;
 
 
+import com.ecommerce.booksale.registration.token.ConfirmationToken;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -43,16 +44,20 @@ public class User implements UserDetails {
     private String phone;
 
     @Column(name="enable")
-    private Boolean enable;
+    private Boolean enabled;
 
     @Column(name="is_lock")
     private Boolean isLock;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH, CascadeType.MERGE,
+            CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(name="user_role",
                 joinColumns = @JoinColumn(name="user_id"),
                 inverseJoinColumns = @JoinColumn(name="role_id"))
     private List<Role> roles;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<ConfirmationToken> confirmationTokens;
 
     public User(String fullName, String email, String address, String password, String phone, List<Role> roles) {
         this.fullName = fullName;

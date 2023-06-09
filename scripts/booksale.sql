@@ -184,7 +184,7 @@ INSERT INTO Roles (role_id, role_name) VALUES (3, 'ROLE_ADMIN');
 DROP TABLE IF EXISTS `Users`;
 CREATE TABLE Users (
   user_id bigint PRIMARY KEY auto_increment,
-  full_name NVARCHAR(255) not null,
+  full_name NVARCHAR(255),
   email VARCHAR(255) unique not null,
   address NVARCHAR(255),
   password VARCHAR(255) not null,
@@ -209,6 +209,17 @@ CREATE TABLE `User_Role`(
 INSERT INTO `User_Role`(user_id, role_id)
 VALUE(1, 1),
 	(1,2);
+
+DROP TABLE IF EXISTS `confirmation_token`;
+CREATE TABLE confirmation_token (
+  token_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  token VARCHAR(255) not null,
+  created_at DATETIME not null,
+  expired_at DATETIME not null,
+  confirm_at DATETIME,
+  user_id BIGINT,
+  CONSTRAINT `FK_token_user` FOREIGN KEY (user_id) REFERENCES Users(user_id)
+)AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `Orders`;
 CREATE TABLE Orders (
