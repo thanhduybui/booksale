@@ -1,7 +1,7 @@
 package com.ecommerce.booksale.entity;
 
+import com.ecommerce.booksale.home.book.Book;
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Data;
 
 import java.util.ArrayList;

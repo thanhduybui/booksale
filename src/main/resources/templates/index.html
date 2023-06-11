@@ -67,70 +67,18 @@
                     </div>
                 </div>
 
-                <div class="top-books grid grid-5--columns">
-                    <div class="top-book">
+                <div class="top-books grid grid-5--columns" >
+                    <div class="top-book" th:each="book: ${books}">
                         <div class="tb-img-box">
                             <img
                                     class="tb-img"
-                                    th:src="@{/imgs/top-books/book1.jpeg}"
+                                    th:src="${book.mainImg}"
                                     alt="Cây cam ngọt của tôi"
                             />
                         </div>
                         <div class="tb-text-box">
-                            <p class="tb-title">Cây cam ngọt của tôi</p>
-                            <p class="tb-author">Jose Mauro de Vasconcelos</p>
-                        </div>
-                    </div>
-                    <div class="top-book">
-                        <div class="tb-img-box">
-                            <img
-                                    class="tb-img"
-                                    th:src="@{/imgs/top-books/book2.jpeg}"
-                                    alt="Cây cam ngọt của tôi"
-                            />
-                        </div>
-                        <div class="tb-text-box">
-                            <p class="tb-title">Toto-chan bên cửa sổ</p>
-                            <p class="tb-author">Tetsuko Kuroyanagi</p>
-                        </div>
-                    </div>
-                    <div class="top-book">
-                        <div class="tb-img-box">
-                            <img
-                                    class="tb-img"
-                                    th:src="@{/imgs/top-books/book3.jpeg}"
-                                    alt="Cây cam ngọt của tôi"
-                            />
-                        </div>
-                        <div class="tb-text-box">
-                            <p class="tb-title">Lược sử kinh tế học</p>
-                            <p class="tb-author">Niall Kishtainy</p>
-                        </div>
-                    </div>
-                    <div class="top-book">
-                        <div class="tb-img-box">
-                            <img
-                                    class="tb-img"
-                                    th:src="@{/imgs/top-books/book4.jpeg}"
-                                    alt="Cây cam ngọt của tôi"
-                            />
-                        </div>
-                        <div class="tb-text-box">
-                            <p class="tb-title">Đắc nhân tâm</p>
-                            <p class="tb-author">Dale Carnegie</p>
-                        </div>
-                    </div>
-                    <div class="top-book">
-                        <div class="tb-img-box">
-                            <img
-                                    class="tb-img"
-                                    th:src="@{/imgs/top-books/book5.jpeg}"
-                                    alt="Cây cam ngọt của tôi"
-                            />
-                        </div>
-                        <div class="tb-text-box">
-                            <p class="tb-title">Số đỏ</p>
-                            <p class="tb-author">Vũ Trọng Phụng</p>
+                            <p class="tb-title" th:text="${book.title}"></p>
+                            <p class="tb-author" th:text="${book.author.name}"></p>
                         </div>
                     </div>
                 </div>

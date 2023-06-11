@@ -1,6 +1,6 @@
 package com.ecommerce.booksale.entity;
 
-import lombok.Builder;
+import com.ecommerce.booksale.home.book.Book;
 import lombok.Data;
 
 import jakarta.persistence.*;

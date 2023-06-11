@@ -1,9 +1,9 @@
 package com.ecommerce.booksale.entity;
 
 
+import com.ecommerce.booksale.home.book.Book;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Data
