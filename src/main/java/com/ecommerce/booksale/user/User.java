@@ -1,6 +1,7 @@
-package com.ecommerce.booksale.entity;
+package com.ecommerce.booksale.user;
 
 
+import com.ecommerce.booksale.entity.Role;
 import com.ecommerce.booksale.registration.token.ConfirmationToken;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -28,7 +29,7 @@ public class User implements UserDetails {
     @Column(name="user_id")
     private Long userId;
 
-    @Column(name="full_name")
+    @Column(name="full_name", nullable = false)
     private String fullName;
 
     @Column(name="email", unique = true)

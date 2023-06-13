@@ -1,8 +1,7 @@
 package com.ecommerce.booksale.registration;
 
 
-import com.ecommerce.booksale.entity.User;
-import com.ecommerce.booksale.service.UserService;
+import com.ecommerce.booksale.user.User;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,11 +16,8 @@ public class RegistrationController {
 
     @GetMapping
     public String handleGetRegister(Model model){
-        // create new user to bind to the form
-        User newUser = new User();
-        System.out.println("IN GET METHOD");
         // set object name
-        model.addAttribute("user", newUser);
+        model.addAttribute("user", new User());
         return "register";
     }
 
@@ -34,14 +30,15 @@ public class RegistrationController {
     @PostMapping
     public String handlePostRegister(
             @ModelAttribute("user") User user,
-            @RequestParam("confirm-password") String confirmPassword){
-        System.out.println("IN POST METHOD");
-
+            @RequestParam("confirm-password") String confirmPassword, Model model){
         try{
             registrationService.register(user, confirmPassword);
         }catch (Exception e){
-            System.out.println("Message " + e);
+            // set object name
+            model.addAttribute("error", e.getMessage());
+            return "register";
         }
+
         return "register-success";
     }
 

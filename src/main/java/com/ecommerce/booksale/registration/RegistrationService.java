@@ -1,12 +1,13 @@
 package com.ecommerce.booksale.registration;
 
 
+import com.ecommerce.booksale.constants.AuthenError;
 import com.ecommerce.booksale.email.EmailSender;
-import com.ecommerce.booksale.entity.User;
+import com.ecommerce.booksale.user.User;
 import com.ecommerce.booksale.registration.token.ConfirmationToken;
 import com.ecommerce.booksale.registration.token.ConfirmationTokenService;
-import com.ecommerce.booksale.repository.UserRepository;
-import com.ecommerce.booksale.service.UserService;
+import com.ecommerce.booksale.user.UserRepository;
+import com.ecommerce.booksale.user.UserService;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 
@@ -27,11 +28,11 @@ public class RegistrationService {
 
     public void register(User user, String confirmPassword){
         if (!checkUserInput(user,confirmPassword)){
-            throw new IllegalArgumentException("The input not right");
+            throw new IllegalArgumentException(AuthenError.NOT_MATCH_PASSWORD_ERROR);
         }
 
         if (!isValidEmail(user)){
-            throw new IllegalStateException("Email already used");
+            throw new IllegalStateException(AuthenError.EMAIL_IN_USE);
         }
 
         // create user and token
@@ -49,18 +50,18 @@ public class RegistrationService {
         // get token from database
         ConfirmationToken confirmationToken = confirmationTokenService
                 .findToken(token).
-                orElseThrow(() -> new IllegalStateException("Token not found"));
+                orElseThrow(() -> new IllegalStateException(AuthenError.TOKEN_NOT_FOUND));
 
         // Check if the token was confirmed
         if (confirmationToken.getConfirmedAt() != null){
-            throw new IllegalStateException("Email already confirmed");
+            throw new IllegalStateException(AuthenError.TOKEN_CONFIRMED);
         }
 
         // get expired time of the token
         LocalDateTime expiredAt = confirmationToken.getExpiredAt();
 
         if (expiredAt.isBefore(LocalDateTime.now())){
-            throw new IllegalStateException("token expired");
+            throw new IllegalStateException(AuthenError.EXPIRED_TOKEN);
         }
 
         confirmationTokenService.setConfirmedAt(token);

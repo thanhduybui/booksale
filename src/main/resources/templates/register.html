@@ -29,6 +29,22 @@
           <!-- FORM REGISTER-->
           <form class="authen-form" action="#" th:action="@{/register}"
                 th:object="${user}" method="POST">
+
+            <div class="error-msg-box" th:if="${error}"><p class="error-msg" th:text="${error}"></p></div>
+
+            <div class="form-control">
+              <label class="margin-bottom-sm" for="fullName"
+              >Họ và tên</label
+              >
+              <input
+                      type="text"
+                      name="fullName"
+                      id="fullName"
+                      th:field="*{fullName}"
+                      placeholder="Bui Thanh Duy"
+              />
+            </div>
+
             <div class="form-control">
               <label class="margin-bottom-sm" for="email"
                 >Email đăng nhập</label

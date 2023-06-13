@@ -1,10 +1,9 @@
-package com.ecommerce.booksale.service;
+package com.ecommerce.booksale.user;
 
 
-import com.ecommerce.booksale.entity.User;
+import com.ecommerce.booksale.constants.AuthenError;
 import com.ecommerce.booksale.registration.token.ConfirmationTokenRepository;
 import com.ecommerce.booksale.registration.token.ConfirmationToken;
-import com.ecommerce.booksale.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,13 +12,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
 @AllArgsConstructor
 public class UserService implements UserDetailsService {
-    private final static String USER_NOT_FOUND = "user with email %s not found";
     private final UserRepository userRepository;
     private final ConfirmationTokenRepository confirmationTokenRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -27,7 +24,7 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         return userRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException(String.format(USER_NOT_FOUND, email)));
+                .orElseThrow(() -> new UsernameNotFoundException(String.format(AuthenError.USER_NOT_FOUND, email)));
     }
 
     public String registerUser(User user){

@@ -154,3 +154,22 @@
 .oauth-logo__img:hover {
   transform: scale(1.1);
 }
+
+/* Msg box */
+.error-msg-box {
+  height: 3.2rem;
+  border-radius: 10px;
+  border: 1px solid #d83838;
+  background-color: #fbebeb;
+  transition: all 0.3s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-msg {
+  font-size: 1.2rem;
+  color: #d83838;
+  font-weight: 500;
+}

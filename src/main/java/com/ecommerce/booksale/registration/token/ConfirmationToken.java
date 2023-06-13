@@ -1,6 +1,6 @@
 package com.ecommerce.booksale.registration.token;
 
-import com.ecommerce.booksale.entity.User;
+import com.ecommerce.booksale.user.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
