@@ -1,7 +1,7 @@
-/* 
+/*
 
 FONT SYSTEM:
-12px 14px 16px 18px 20px 24px 32px 36px 48px 52px 64px 76px 84px 96px 
+12px 14px 16px 18px 20px 24px 32px 36px 48px 52px 64px 76px 84px 96px
 SPACING SYSTEM
 1px 2px 4px 8px 12px 16px 20px 24px 32px 48px 64px 74px 86px 96px 128px
 
@@ -9,7 +9,7 @@ COLOR:
 - primary:#00817E ;
 - tints: #1a8e8b, #E6F2F2;
 #99cdcb for button see all
-- shades: 
+- shades:
 #004d4c for text on background #E6F2F2;
 - other: #fab005
 -------text color: #fff;
@@ -21,7 +21,7 @@ for Price: #f03e3e, #d83838
 
 LINE HIGH
 - for big text:
-- for normal text: 
+- for normal text:
 
 SHADOW
  box-shadow: 0 0rem 1.6rem rgba(0, 0, 0, 0.07);
@@ -92,12 +92,6 @@ body {
 
 .grid-5--columns {
   grid-template-columns: repeat(5, 1fr);
-}
-
-.grid-6--columns {
-  grid-template-columns: repeat(6, 1fr);
-  column-gap: 4.8rem;
-  row-gap: 2.4rem;
 }
 
 .btn {
@@ -469,4 +463,35 @@ body {
 .pagination-btn.active {
   color: #00817e;
   font-weight: 600;
+}
+
+/* FORM */
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-control label {
+  color: #555;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.form-control input,
+.form-control select,
+.form-control textarea {
+  border: none;
+  box-shadow: inset 0 0 0 2px #ddd;
+  font-size: 1.4rem;
+  border-radius: 9px;
+  padding: 1rem 1.2rem;
+  color: #555;
+  transition: all 0.3s;
+}
+
+.form-control input:focus {
+  box-shadow: 0 0 2px 2px #00817e;
+  outline: none;
 }

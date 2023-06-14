@@ -3,6 +3,7 @@ package com.ecommerce.booksale.user;
 
 import com.ecommerce.booksale.entity.Role;
 import com.ecommerce.booksale.registration.token.ConfirmationToken;
+import com.ecommerce.booksale.user.address.Address;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,6 +13,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -60,6 +62,9 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<ConfirmationToken> confirmationTokens;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Address> addresses;
+
     public User(String fullName, String email, String address, String password, String phone, List<Role> roles) {
         this.fullName = fullName;
         this.email = email;
@@ -67,6 +72,22 @@ public class User implements UserDetails {
         this.password = password;
         this.phone = phone;
         this.roles = roles;
+    }
+
+    public void addAddress(Address newAddress){
+        if (addresses != null){
+            addresses = new ArrayList<>();
+        }
+        newAddress.setUser(this);
+        addresses.add(newAddress);
+    }
+
+    public void addToken(ConfirmationToken token){
+        if (confirmationTokens != null){
+            confirmationTokens = new ArrayList<>();
+        }
+        token.setUser(this);
+        confirmationTokens.add(token);
     }
 
     @Override

@@ -39,7 +39,8 @@ public class WebSecurityConfig {
                 .formLogin(form -> form
                         .loginPage("/login")
                         .loginProcessingUrl("/authenticateTheUser")
-                        .permitAll());
+                        .permitAll())
+                .logout(logout -> logout.permitAll());
         http.httpBasic(Customizer.withDefaults());
         http.csrf(csrf-> csrf.disable());
 

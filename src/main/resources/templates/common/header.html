@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org">
 
 <body>
     <section th:fragment="copy"
@@ -41,10 +42,10 @@
               ><ion-icon class="cart-icon" name="cart-sharp"></ion-icon
               ></a>
             </li>
-            <li class="main-nav-item">
-              <a th:href="@{/login}" class="header-link">Đăng nhập</a>
-            </li>
-            <li class="main-nav-item dropdown hide">
+<!--            <li class="main-nav-item" sec:authorize="isAnonymous()">-->
+<!--              <a th:href="@{/login}" class="header-link">Đăng nhập</a>-->
+<!--            </li>-->
+            <li class="main-nav-item dropdown" sec:authorize="isAuthenticated()">
               <a class="user header-link dropdown-toggle" href="#"
               ><img
                       class="profile-img"
@@ -56,7 +57,7 @@
                   <a class="user-list__link" href="#">Thông tin cá nhân</a>
                 </li>
                 <li><a class="user-list__link" href="#">Đổi mật khẩu</a></li>
-                <li><a class="user-list__link" href="#">Đăng xuất</a></li>
+                <li><a class="user-list__link" th:href="@{/logout}">Đăng xuất</a></li>
               </ul>
             </li>
           </ul>

@@ -522,6 +522,22 @@ CREATE TABLE confirmation_token (
   CONSTRAINT `FK_token_user` FOREIGN KEY (user_id) REFERENCES Users(user_id)
 )AUTO_INCREMENT=1;
 
+
+DROP TABLE IF EXISTS `address`;
+CREATE TABLE address (
+  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  province VARCHAR(255),
+  district VARCHAR(255),
+  village VARCHAR(255),
+  street VARCHAR(255),
+  type VARCHAR(255),
+  description VARCHAR(300),
+  user_id BIGINT NOT NULL,
+ CONSTRAINT `FK_address_user` FOREIGN KEY (user_id) REFERENCES users(user_id)
+ 
+)AUTO_INCREMENT=1;
+
+
 DROP TABLE IF EXISTS `Orders`;
 CREATE TABLE Orders (
   order_id bigint PRIMARY KEY,
