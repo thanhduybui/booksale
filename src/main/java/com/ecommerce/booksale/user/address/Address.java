@@ -24,8 +24,8 @@ public class Address {
     @Column(name="district")
     private String district;
 
-    @Column(name="village") //
-    private String village;
+    @Column(name="ward") //
+    private String ward;
 
     @Column(name="street")
     private String street;
