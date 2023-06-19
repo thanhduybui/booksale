@@ -11,7 +11,7 @@
           <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
         </button>
         <div class="header-left">
-          <a href="@{/}" class="logo"
+          <a th:href="@{/}" class="logo"
           ><span class="header-logo">BOOKSALE</span></a
           >
         </div>
@@ -67,25 +67,18 @@
       <nav class="navigation">
         <div class="container">
           <ul class="nav-list">
+
             <li class="dropdown">
               <a href="#" class="nav-link dropdown-toggle">Danh mục</a>
-              <ul class="category-dropdown dropdown-menu">
-                <li>
-                  <a class="category-link" href="book.html"
-                  >Tiểu thuyết - văn học</a
+              <ul class="category-dropdown dropdown-menu" >
+                <li th:each="c : ${categories}">
+                  <a class="category-link" href="#" th:href="@{|/category/${c.categoryId}|}"
+                   th:text="${c.name}"></a
                   >
                 </li>
-                <li><a class="category-link" href="#">Sách kinh tế</a></li>
-                <li><a class="category-link" href="#">Sách khoa học</a></li>
-                <li><a class="category-link" href="#">Sách self-help</a></li>
-                <li>
-                  <a class="category-link" href="#">Sách tâm lí tội phạm</a>
-                </li>
-                <li><a class="category-link" href="#">Sách thiếu nhi</a></li>
-                <li><a class="category-link" href="#">Sách bán chạy</a></li>
-                <li><a class="category-link" href="#">Sách mới</a></li>
               </ul>
             </li>
+
             <li><a href="#" class="nav-link">Sách mới</a></li>
             <li><a href="#" class="nav-link">Sách bán chạy</a></li>
             <li><a href="#" class="nav-link">Sản phẩm nổi bật</a></li>

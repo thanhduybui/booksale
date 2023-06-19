@@ -487,15 +487,14 @@ CREATE TABLE Users (
   user_id bigint PRIMARY KEY auto_increment,
   full_name NVARCHAR(255),
   email VARCHAR(255) unique not null,
-  address NVARCHAR(255),
   password VARCHAR(255) not null,
   phone VARCHAR(20),
   enable tinyint,
   is_lock tinyint
 )auto_increment=1;
 
-INSERT INTO Users (full_name, email, address, password, phone, enable, is_lock)
-VALUES('Bùi Thanh Duy', 'dtb1742002@gmail.com', 'Ho Chi Minh, Viet Nam', '$2a$12$aVNMqqYZnOStzUTPO9f.JOgUWXTrzmgZy9v0UoTuSHq2pZL.3QIFC', '0383314133', 1, 0 );
+INSERT INTO Users (full_name, email, password, phone, enable, is_lock)
+VALUES('Bùi Thanh Duy', 'dtb1742002@gmail.com', '$2a$12$aVNMqqYZnOStzUTPO9f.JOgUWXTrzmgZy9v0UoTuSHq2pZL.3QIFC', '0383314133', 1, 0 );
 
 
 
@@ -528,7 +527,7 @@ CREATE TABLE address (
   id BIGINT PRIMARY KEY AUTO_INCREMENT,
   province VARCHAR(255),
   district VARCHAR(255),
-  village VARCHAR(255),
+  ward VARCHAR(255),
   street VARCHAR(255),
   type VARCHAR(255),
   description VARCHAR(300),
@@ -536,6 +535,13 @@ CREATE TABLE address (
  CONSTRAINT `FK_address_user` FOREIGN KEY (user_id) REFERENCES users(user_id)
  
 )AUTO_INCREMENT=1;
+
+INSERT INTO address (province, district, ward, street, type, description, user_id)
+VALUES
+('Hà Nội', 'Quận Ba Đình', 'Phường Cống Vị', 'Đường Kim Mã', 'Nhà riêng', 'Địa chỉ số 1', 1),
+('Hồ Chí Minh', 'Quận 1', 'Phường Bến Nghé', 'Đường Đồng Khởi', 'Chung cư', 'Địa chỉ số 2', 1);
+
+
 
 
 DROP TABLE IF EXISTS `Orders`;

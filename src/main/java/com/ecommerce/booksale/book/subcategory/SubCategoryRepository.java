@@ -1,6 +1,5 @@
-package com.ecommerce.booksale.repository;
+package com.ecommerce.booksale.book.subcategory;
 
-import com.ecommerce.booksale.entity.SubCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

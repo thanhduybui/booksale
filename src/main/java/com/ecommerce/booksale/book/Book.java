@@ -1,12 +1,11 @@
-package com.ecommerce.booksale.home.book;
+package com.ecommerce.booksale.book;
 
 
-import com.ecommerce.booksale.entity.Author;
-import com.ecommerce.booksale.entity.Category;
-import com.ecommerce.booksale.entity.Image;
-import com.ecommerce.booksale.entity.Publisher;
+import com.ecommerce.booksale.book.author.Author;
+import com.ecommerce.booksale.book.category.Category;
+import com.ecommerce.booksale.book.image.Image;
+import com.ecommerce.booksale.book.publisher.Publisher;
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

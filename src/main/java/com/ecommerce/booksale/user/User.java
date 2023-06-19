@@ -1,7 +1,7 @@
 package com.ecommerce.booksale.user;
 
 
-import com.ecommerce.booksale.entity.Role;
+import com.ecommerce.booksale.user.role.Role;
 import com.ecommerce.booksale.registration.token.ConfirmationToken;
 import com.ecommerce.booksale.user.address.Address;
 import jakarta.persistence.*;
@@ -37,9 +37,6 @@ public class User implements UserDetails {
     @Column(name="email", unique = true)
     private String email;
 
-    @Column(name="address")
-    private String address;
-
     @Column(name="password", nullable = false)
     private String password;
 
@@ -65,14 +62,14 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Address> addresses;
 
-    public User(String fullName, String email, String address, String password, String phone, List<Role> roles) {
+    public User(String fullName, String email, String password, String phone, List<Role> roles) {
         this.fullName = fullName;
         this.email = email;
-        this.address = address;
         this.password = password;
         this.phone = phone;
         this.roles = roles;
     }
+
 
     public void addAddress(Address newAddress){
         if (addresses != null){

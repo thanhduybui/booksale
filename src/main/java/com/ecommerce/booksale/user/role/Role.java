@@ -1,4 +1,4 @@
-package com.ecommerce.booksale.entity;
+package com.ecommerce.booksale.user.role;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

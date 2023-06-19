@@ -1,6 +1,6 @@
-package com.ecommerce.booksale.repository;
+package com.ecommerce.booksale.book.author;
 
-import com.ecommerce.booksale.entity.Author;
+import com.ecommerce.booksale.book.author.Author;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

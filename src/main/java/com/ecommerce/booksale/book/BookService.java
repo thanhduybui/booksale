@@ -1,4 +1,4 @@
-package com.ecommerce.booksale.home.book;
+package com.ecommerce.booksale.book;
 
 
 import lombok.AllArgsConstructor;

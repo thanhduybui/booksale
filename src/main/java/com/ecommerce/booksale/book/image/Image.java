@@ -1,7 +1,7 @@
-package com.ecommerce.booksale.entity;
+package com.ecommerce.booksale.book.image;
 
 
-import com.ecommerce.booksale.home.book.Book;
+import com.ecommerce.booksale.book.Book;
 import jakarta.persistence.*;
 import lombok.Data;
 

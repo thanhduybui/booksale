@@ -51,5 +51,12 @@ public class UserService implements UserDetailsService {
     }
 
 
+    public UserDTO getUserInformation(String email){
+        User user = (User) loadUserByUsername(email);
+        UserDTO userDTO = new UserDTO(user);
+        return userDTO;
+    }
+
+
 
 }

@@ -1,5 +1,5 @@
-package com.ecommerce.booksale.entity;
-import com.ecommerce.booksale.home.book.Book;
+package com.ecommerce.booksale.book.author;
+import com.ecommerce.booksale.book.Book;
 import jakarta.persistence.*;
 
 import jakarta.persistence.Entity;

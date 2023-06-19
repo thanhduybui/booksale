@@ -31,7 +31,7 @@ public class Address {
     private String street;
 
     @Column(name="type")
-    private String type; // HOME or COMPANY
+    private String type = "HOME"; // HOME or COMPANY
 
     @Column(name="description")
     private String description;
@@ -40,4 +40,18 @@ public class Address {
             CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name="user_id")
     private User user;
+
+    @Override
+    public String toString() {
+
+            return
+                     province +
+                     ", " + district +
+                     ", " + ward +
+                     ", " + street +
+                     ", " + type +
+                    ", " + description
+                    ;
+
+    }
 }

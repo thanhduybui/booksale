@@ -1,6 +1,7 @@
-package com.ecommerce.booksale.entity;
+package com.ecommerce.booksale.book.category;
 
-import com.ecommerce.booksale.home.book.Book;
+import com.ecommerce.booksale.book.Book;
+import com.ecommerce.booksale.book.subcategory.SubCategory;
 import lombok.Data;
 
 import jakarta.persistence.*;
