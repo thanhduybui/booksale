@@ -71,7 +71,7 @@
             <li class="dropdown">
               <a href="#" class="nav-link dropdown-toggle">Danh mục</a>
               <ul class="category-dropdown dropdown-menu" >
-                <li th:each="c : ${categories}">
+                <li th:each="c : ${session.categories}">
                   <a class="category-link" href="#" th:href="@{|/category/${c.categoryId}|}"
                    th:text="${c.name}"></a
                   >

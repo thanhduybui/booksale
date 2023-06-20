@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{ common/head.html :: common_header(~{::title},~{::link}) }">
+    <title>Category Book</title>
+
+    <link rel="stylesheet" th:href="@{/css/book.css}" >
+
+</head>
+
+<body>
+<!-- HEADER -->
+<header th:insert="~{common/header.html :: copy}"></header>
+<!-- MAIN CONTENT -->
+<main class="category-books-section">
+    <div class="category-page container grid grid-category">
+        <nav class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="sidebar-menu-item">
+                    <a href="index.html" class="sidebar-menu-link"
+                    ><ion-icon class="start-icon" name="home-sharp"></ion-icon
+                    ><span>Trang chủ</span></a
+                    >
+                </li>
+                <!-- dynamic part -->
+                <li class="sidebar-menu-item">
+                    <a class="sidebar-menu-link">
+                        <ion-icon class="start-icon" name="grid-sharp"></ion-icon
+                        ><span>Danh mục</span>
+                        <span class="end-icon">
+                  <ion-icon name="chevron-forward-sharp"></ion-icon>
+                  <ion-icon name="chevron-down-sharp"></ion-icon>
+                </span>
+                    </a>
+                    <ul class="sub-items">
+                        <li class="sub-item">
+                            <a href="#" class="sub-item-link">Văn học việt nam</a>
+                        </li>
+                        <li class="sub-item">
+                            <a href="#" class="sub-item-link">Văn học nước ngoài</a>
+                        </li>
+                        <li class="sub-item">
+                            <a href="#" class="sub-item-link">Thiếu nhi</a>
+                        </li>
+                        <li class="sub-item">
+                            <a href="#" class="sub-item-link">Trinh thám</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- fix part -->
+                <li class="sidebar-menu-item">
+                    <a href="#" class="sidebar-menu-link"
+                    ><ion-icon class="start-icon" name="call-sharp"></ion-icon
+                    ><span>Liên hệ chúng tôi</span></a
+                    >
+                </li>
+                <li class="sidebar-menu-item">
+                    <a href="#" class="sidebar-menu-link"
+                    ><ion-icon class="start-icon" name="people-sharp"></ion-icon
+                    ><span>Về chúng tôi</span></a
+                    >
+                </li>
+            </ul>
+        </nav>
+        <div class="category-books">
+            <h2 class="heading-secondary margin-bottom-super">
+                Tiểu thuyết văn học
+            </h2>
+            <div class="books grid grid-4--columns">
+                <div class="book-card"  th:each="i : ${#numbers.sequence(1, 12)}">
+                    <span class="discount-tag">-30%</span>
+                    <img
+                            th:src="@{imgs/top-books/book1.jpeg}"
+                            alt="Book Cover"
+                            class="card-img"
+                    />
+                    <div class="card-body">
+                        <h3 class="card-title">Cây cam ngọt của tôi</h3>
+                        <div class="rating card-rating" >
+                  <span class="rating-number">4.8</span
+                  ><span><ion-icon name="star"></ion-icon></span
+                        ><span class="rating-text">Đã bán 200</span>
+                        </div>
+                        <div class="card-prices">
+                            <span class="card-discount">76.000đ</span>
+                            <span class="card-price">100.000đ</span>
+                        </div>
+                        <a href="#" class="card-link">mua sách &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagination">
+                <a href="#" class="pagination-btn prev"
+                ><ion-icon name="chevron-back-outline"></ion-icon
+                ></a>
+                <a href="#" class="pagination-btn active">1</a>
+                <a href="#" class="pagination-btn">2</a>
+                <a href="#" class="pagination-btn">3</a>
+                <a href="#" class="pagination-btn">4</a>
+                <a class="pagination-btn">...</a>
+                <a href="#" class="pagination-btn next"
+                ><ion-icon name="chevron-forward-outline"></ion-icon
+                ></a>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- FOOTER -->
+<footer th:replace="~{common/footer.html :: copy}" >
+</footer>
+
+<script
+        type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+></script>
+<script
+        nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+></script>
+</body>
+</html>

@@ -4,6 +4,7 @@ import com.ecommerce.booksale.book.Book;
 import com.ecommerce.booksale.book.BookService;
 import com.ecommerce.booksale.book.category.Category;
 import com.ecommerce.booksale.book.category.CategoryService;
+import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 
@@ -17,18 +18,17 @@ import java.util.List;
 public class HomeController {
 
     private final BookService bookService;
-    private final CategoryService categoryService;
+
     @GetMapping("/")
-    public String renderHomePage(Model theModel){
+    public String renderHomePage(Model theModel, HttpSession session) {
 
         // get all books from service
         List<Book> books = bookService.findTopBooks();
-        // get all list Category from service
-        List<Category> categories = categoryService.getAllCategories();
+
 
         // add to model;
         theModel.addAttribute("books", books);
-        theModel.addAttribute("categories", categories);
+
 
         return "index";
     }
