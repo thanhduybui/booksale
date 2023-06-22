@@ -15,15 +15,8 @@ import java.util.List;
 @AllArgsConstructor
 public class LoginController {
 
-    private final CategoryService categoryService;
     @GetMapping("/login")
-    public String handleLoginRequest(HttpSession session){
-
-        // get all list Category from service
-        List<Category> categories = categoryService.getAllCategories();
-        // add categories to session
-        session.setAttribute("categories", categories);
-
+    public String handleLoginRequest(Model model){
         return "login";
     }
 }

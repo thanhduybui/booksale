@@ -25,8 +25,7 @@ public class HomeController {
         // get all books from service
         List<Book> books = bookService.findTopBooks();
 
-
-        // add to model;
+        // add attributes to model
         theModel.addAttribute("books", books);
 
 

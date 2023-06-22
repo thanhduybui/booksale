@@ -1,4 +1,4 @@
-package com.ecommerce.booksale.security;
+package com.ecommerce.booksale.config.security;
 
 
 import com.ecommerce.booksale.user.UserService;
