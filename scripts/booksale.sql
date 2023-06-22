@@ -62,9 +62,9 @@ INSERT INTO Categories (name, is_active) VALUES
 ('Giảm giá', 1);
 
 
-DROP TABLE IF EXISTS `Sub_categories`;
+DROP TABLE IF EXISTS `subcategories`;
 CREATE TABLE Sub_categories (
-  sub_category_id int PRIMARY KEY auto_increment,
+  subcategory_id int PRIMARY KEY auto_increment,
   name VARCHAR(255),
   category_id int,
   
@@ -125,7 +125,7 @@ CREATE TABLE Books (
   
    constraint `FK_books_authors` FOREIGN KEY(`author_id`) References Authors(`author_id`),
    constraint `FK_books_category` FOREIGN KEY(`category_id`) References Categories(`category_id`),
-   constraint `FK_books_subcategory` foreign key(`subcategory_id`) references Sub_categories(`sub_category_id`) ,
+   constraint `FK_books_subcategory` foreign key(`subcategory_id`) references Sub_categories(`subcategory_id`) ,
    constraint `FK_books_publisher` foreign key(`publisher_id`) references Publishers(`publisher_id`) 
 ) auto_increment=1;
 
@@ -469,6 +469,17 @@ CREATE TABLE Book_Category(
 );
 
 
+Drop table if exists `Book_Subcategory`;
+CREATE TABLE Book_Subcategory(
+	book_id int not null,
+    subcategory_id int not null,
+    
+	constraint `FK_booksubcategory_book` FOREIGN KEY(`book_id`) References Books(`book_id`),
+    constraint `FK_booksubcategory_subcategory` FOREIGN KEY(`subcategory_id`) References Sub_Categories(`subcategory_id`)
+);
+
+
+
 DROP TABLE IF EXISTS `Roles`;
 CREATE TABLE Roles (
   role_id INT PRIMARY KEY,
@@ -563,6 +574,44 @@ CREATE TABLE Order_Items (
   constraint `FK_order_items_orders` FOREIGN KEY (order_id) REFERENCES Orders(order_id),
   constraint `FK_order_itens_books` FOREIGN KEY (book_id) REFERENCES Books(book_id)
 );
+
+SELECT b.book_id, b.author_id, b.discount, b.is_active, b.main_img, b.price, b.publication_year, b.publisher_id, b.quantity, b.title
+FROM books b
+JOIN book_category c ON b.book_id = c.book_id
+WHERE c.category_id = 2;
+
+
+-- // INSERT BOOK_CATEGORY PROCEDURE
+DELIMITER //
+CREATE PROCEDURE InsertBookCategories()
+BEGIN
+    DECLARE counter INT DEFAULT 1;
+
+    WHILE counter <= 79 DO
+        INSERT INTO Book_Category (book_id, category_id)
+        VALUES (counter, 1);
+        SET counter = counter + 1;
+    END WHILE;
+END //
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE InsertBookSubCategories()
+BEGIN
+    DECLARE counter INT DEFAULT 1;
+
+    WHILE counter <= 20 DO
+        INSERT INTO Book_SubCategory (book_id, subcategory_id)
+        VALUES (counter, 2);
+        SET counter = counter + 1;
+    END WHILE;
+END //
+DELIMITER ;
+
+
+Call InsertBookSubCategories();
+
 
 
 

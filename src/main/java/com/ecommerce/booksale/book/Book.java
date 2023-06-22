@@ -5,6 +5,8 @@ import com.ecommerce.booksale.book.author.Author;
 import com.ecommerce.booksale.book.category.Category;
 import com.ecommerce.booksale.book.image.Image;
 import com.ecommerce.booksale.book.publisher.Publisher;
+import com.ecommerce.booksale.book.subcategory.SubCategory;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -48,23 +50,34 @@ public class Book {
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
             CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name="author_id")
-    public Author author;
+    @JsonIgnore
+    private Author author;
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
                     CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name="publisher_id")
-    public Publisher publisher;
+    @JsonIgnore
+    private Publisher publisher;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade =
             {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(name="Book_Category",
             joinColumns = @JoinColumn(name="book_id"),
             inverseJoinColumns = @JoinColumn(name="category_id"))
-    public List<Category> categories;
+    @JsonIgnore
+    private List<Category> categories;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade =
+            {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinTable(name="Book_Subcategory",
+            joinColumns = @JoinColumn(name="book_id"),
+            inverseJoinColumns = @JoinColumn(name="subcategory_id"))
+    @JsonIgnore
+    private List<SubCategory> Subcategories;
 
     @OneToMany(mappedBy = "book" , cascade =
                     {CascadeType.DETACH, CascadeType.MERGE,
                     CascadeType.PERSIST, CascadeType.REFRESH})
-    public List<Image> images;
+    private List<Image> images;
 
 }
