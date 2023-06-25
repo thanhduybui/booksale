@@ -1,0 +1,41 @@
+package com.ecommerce.booksale.book;
+import com.ecommerce.booksale.book.category.Category;
+import com.ecommerce.booksale.book.image.Image;
+import com.ecommerce.booksale.book.subcategory.SubCategory;
+
+import java.awt.*;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class BookMapper {
+    public static BookDTO toDTO(Book book) {
+        BookDTO bookDTO = new BookDTO();
+        bookDTO.setBookId(book.getBookId());
+        bookDTO.setTitle(book.getTitle());
+        bookDTO.setPublicationYear(book.getPublicationYear());
+        bookDTO.setDiscount(book.getDiscount());
+        bookDTO.setMainImg(book.getMainImg());
+        bookDTO.setActive(book.isActive());
+        bookDTO.setPrice(book.getPrice());
+        bookDTO.setQuantity(book.getQuantity());
+        bookDTO.setAuthorId(book.getAuthor().getAuthorId());
+        bookDTO.setPublisherId(book.getPublisher().getPublisherId());
+
+        List<Integer> categoryIds = book.getCategories().stream()
+                .map(Category::getCategoryId)
+                .collect(Collectors.toList());
+        bookDTO.setCategoryIds(categoryIds);
+
+        List<Integer> subcategoryIds = book.getSubcategories().stream()
+                .map(SubCategory::getSubCategoryId)
+                .collect(Collectors.toList());
+        bookDTO.setSubcategoryIds(subcategoryIds);
+
+        List<Integer> imageIds = book.getImages().stream()
+                .map(Image::getImgId)
+                .collect(Collectors.toList());
+        bookDTO.setImageIds(imageIds);
+
+        return bookDTO;
+    }
+}

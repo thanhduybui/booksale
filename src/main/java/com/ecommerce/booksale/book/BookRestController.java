@@ -14,8 +14,8 @@ import java.util.List;
 public class BookRestController {
     private BookService bookService;
 
-    @GetMapping("/{id}")
-    List<Book> getBooksByCategory(@PathVariable int id){
+    @GetMapping("/subcategory/{id}")
+    List<BookDTO> getBooksBySubCategory(@PathVariable int id){
         return bookService.getBookBySubCategoryId(id);
     }
 
