@@ -41,7 +41,9 @@ public class BookMapper {
     }
 
     private static  String handlePrice(double price, int discount){
-        double finalPrice = price * (1 - discount/100);
+        double percent = (double)discount/100;
+
+        double finalPrice = price * (1 - percent);
 
         int resultPrice = (int)Math.round(finalPrice);
 

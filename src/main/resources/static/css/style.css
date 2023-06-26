@@ -520,6 +520,7 @@ header {
   color: #00817e;
 }
 
+.bs-link,
 .bs-link:link,
 .bs-link:visited {
   display: inline-block;
