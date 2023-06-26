@@ -72,7 +72,7 @@
               <a href="#" class="nav-link dropdown-toggle">Danh mục</a>
               <ul class="category-dropdown dropdown-menu" >
                 <li th:each="c : ${categories}">
-                  <a class="category-link" href="#" th:href="@{|/category/${c.categoryId}|}"
+                  <a class="category-link" href="#" th:href="@{|/book/category/${c.categoryId}|}"
                    th:text="${c.name}"></a
                   >
                 </li>

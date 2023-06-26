@@ -130,14 +130,12 @@ booksLinkEl.forEach((link) => {
 });
 
 //remove book cards
-const removeBookCards = () => {
-
-  const bookCards = document.querySelectorAll(".book-card");
+const removeBookCards = (container) => {
+  const bookCards = container.querySelectorAll(".book-card");
 
   bookCards.forEach((card) => {
     card.remove();
   });
-
 };
 
 function loadDataBooks(url, container) {
@@ -146,7 +144,7 @@ function loadDataBooks(url, container) {
     .then((data) => {
       // Update the booksContainer with the retrieved data
       const insertHtml = data.map((book) => renderCard(book)).join("");
-      removeBookCards();
+      removeBookCards(container);
       container.insertAdjacentHTML("beforeend", insertHtml);
     })
     .catch((error) => {

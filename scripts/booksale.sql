@@ -148,6 +148,126 @@ CREATE TABLE Books (
 --     ('Bố mẹ ơi, con từ đâu tới', 1, 1, 2022, 10, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2021/4/14/B4QRWYV8.jpg', 76000, 60, 7, 15, 1);
 
 
+-- Văn học kin điển
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Faust - Johann WolfGang Von Goethe', 1, 1, 2023, 30, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2023/6/9/46XLHEM7.jpg', 103000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Cha và Con (Ivan Turgenev)', 1, 1, 2023, 30, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2023/5/17/G59LJ9W5.jpg', 103000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Hãy đi đặt người canh gác', 1, 1, 2023, 30, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2023/5/23/4YRFRQRX.jpg', 103000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Truyện ma (M.R.James)', 1, 1, 2023, 30, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2023/5/8/DVBH3XKI.jpg', 103000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Momo (Michael Ende)', 1, 1, 2023, 30, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2023/5/8/OSWXECG1.jpg', 103000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Tiếng núi', 1, 1, 2023, 30, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2022/9/14/899HQYIC.jpg', 103000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Sáng trăng', 1, 1, 2023, 30, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2022/7/11/4TH9IWTX.jpg', 103000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Tâm hồn cao thượng (Bìa cứng)', 1, 1, 2023, 30, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2022/3/21/7QBCRMMF.jpg', 103000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Tâm hồn cao thượng', 1, 1, 2023, 30, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2022/3/10/DAUQRNH8.jpg', 103000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Anne tóc đỏ làng Avonlea', 1, 1, 2023, 30, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2022/3/8/OV41WE4J.jpg', 103000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Tội ác và hình phạt', 1, 1, 2023, 30, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2021/7/2/UH8ZDY1I.jpg', 103000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('451 độ F (Bìa Cứng)', 1, 1, 2023, 30, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2021/3/31/5FLRD8VR.jpg', 103000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Zarathustra đã nói như thế - Bìa cứng ', 1, 1, 2023, 30, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2021/4/1/5UWRRRK6.jpg', 103000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Sử ký III - Thế gia', 1, 1, 2023, 30, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2020/11/16/8Y8JP5K2.jpg', 103000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Khuyến học( Bìa cứng)', 1, 1, 2023, 30, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2020/11/16/18NX6Z1D.jpg', 103000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Trong khi chờ đợi Godot ', 1, 1, 2023, 30, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2020/12/7/ERA1QXWE.jpg', 103000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Nhà đầu tư thông minh ( TB 199.000)', 1, 1, 2023, 30, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2020/7/2/TZFQ255S.jpg', 103000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Bút ký người đi săn', 1, 1, 2023, 30, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2020/6/16/UHPYJK3I.jpg', 103000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Người truyền ký ức (Giải thưởng Boston Globe-Horn Book) -TB2020', 1, 1, 2023, 30, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2020/5/14/68D2VCZD.jpg', 103000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Giã từ vũ khí', 1, 1, 2023, 30, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2020/3/23/LBR3C3CC.jpg', 103000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Anh Meaulnes', 1, 1, 2023, 20, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2019/12/18/MFNXVVNF.jpg', 178000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Nhật ký Anne Frank', 1, 1, 2023, 20, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2020/3/4/32O1P31A.jpg', 178000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Mai-nương Lệ-cốt', 1, 1, 2023, 20, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2019/12/10/BUS5CXDL.jpg', 178000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Những linh hồn chết ', 1, 1, 2023, 20, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2019/11/20/GSS1GX65.jpg', 178000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Chúa tể những chiếc nhẫn - Đoàn hộ nhẫn', 1, 1, 2023, 20, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2019/10/30/Q65JIR35.jpg', 178000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Trà hoa nữ (TB 2019)', 1, 1, 2023, 20, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2019/11/5/MKB6UDJM.jpg', 178000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Ba gã say luận đàm thế sự', 1, 1, 2023, 20, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2019/10/2/897JBVIO.jpg', 178000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Lò sát sinh số 5', 1, 1, 2023, 20, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2019/8/15/SBB5XJMG.jpg', 178000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Đẹp và buồn', 1, 1, 2023, 20, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2019/8/15/5GL5CMYJ.jpg', 178000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Hoàng hậu Margot ', 1, 1, 2023, 20, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2019/7/21/CKC6JAFB.jpg', 178000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Tôn tử binh pháp', 1, 1, 2023, 20, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2019/6/28/QGRGE9EW.jpg', 178000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Tâm hồn cao thượng (TB 2019)', 1, 1, 2023, 20, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2019/6/28/3USSMBZ6.jpg', 178000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Chúa tể những chiếc nhẫn - Hai tòa tháp (TB 2019)', 1, 1, 2023, 20, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2019/6/21/WSSF5WOV.jpg', 178000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Bắt trẻ đồng xanh ( Bìa cứng)', 1, 1, 2023, 20, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2019/6/10/IAZSYBRX.jpg', 178000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Thằng cười', 1, 1, 2023, 20, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2019/6/21/YGNDDCZA.jpg', 178000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Người tình (Tái bản 2019)', 1, 1, 2023, 20, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2019/5/22/OK4XH82R.jpg', 178000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Những người đẹp say ngủ', 1, 1, 2023, 20, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2019/6/10/RO6PRCR9.jpg', 178000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Bảo tàng ngây thơ (TB 2019)', 1, 1, 2023, 20, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2019/6/6/XI4SKQAL.jpg', 178000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Chết chịu', 1, 1, 2023, 20, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2019/9/4/OEH3NNGG.jpg', 178000, 100, 1, 1, 1);
+
+
+INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active) VALUES('Gió qua rặng liễu (TB 2019)', 1, 1, 2023, 20, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2019/5/31/EQ9O36XB.jpg', 178000, 100, 1, 1, 1);
+
 -- Văn học Việt Nam 
 INSERT INTO Books (title, author_id, publisher_id, publication_year, discount, main_img, price, quantity, category_id, subcategory_id, is_active)
 VALUES('Gió đầu mùa - Việt Nam Danh Tác', 1, 1, 2002, 30, 'http://static.nhanam.com.vn/thumb/0x230/crop/Books/Images/2023/3/21/DGDZBYGY.jpg', 46000, 100, 1, 2, 1 );
@@ -595,22 +715,24 @@ BEGIN
 END //
 DELIMITER ;
 
-
 DELIMITER //
-CREATE PROCEDURE InsertBookSubCategories()
-BEGIN
-    DECLARE counter INT DEFAULT 1;
 
-    WHILE counter <= 20 DO
+CREATE PROCEDURE InsertBookSubCategories(IN start_id INT, IN end_id INT, IN subcategory_id INT)
+BEGIN
+    DECLARE counter INT DEFAULT start_id;
+
+    WHILE counter <= end_id DO
         INSERT INTO Book_SubCategory (book_id, subcategory_id)
-        VALUES (counter, 2);
+        VALUES (counter, subcategory_id);
         SET counter = counter + 1;
     END WHILE;
 END //
+
 DELIMITER ;
 
 
-Call InsertBookSubCategories();
+
+Call InsertBookSubCategories(100, 139, 1);
 
 
 
