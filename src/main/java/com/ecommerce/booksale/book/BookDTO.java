@@ -20,9 +20,12 @@ public class BookDTO {
     private double price;
     private int quantity;
     private boolean isActive;
+    private String finalPrice;
     private int authorId;
     private int publisherId;
     private List<Integer> categoryIds;
     private List<Integer> subcategoryIds;
     private List<Integer> imageIds;
+
+
 }

@@ -25,4 +25,7 @@ public interface BookRepository extends JpaRepository<Book, Long>, PagingAndSort
 
     @Query("SELECT b FROM Book b JOIN b.Subcategories c WHERE c.subCategoryId = :subCategoryId")
     List<Book> findBySubCategoryId(@Param("subCategoryId") int subCategoryId);
+
+    @Query("SELECT b FROM Book b JOIN b.Subcategories c WHERE c.subCategoryId = :subCategoryId")
+    List<Book> findBySubcategoryId(@Param("subCategoryId") int subCategoryId, Pageable pageable);
 }

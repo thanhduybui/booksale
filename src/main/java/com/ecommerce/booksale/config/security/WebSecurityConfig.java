@@ -34,7 +34,7 @@ public class WebSecurityConfig {
         throws Exception{
         http.authorizeHttpRequests(request ->
                 request
-                        .requestMatchers("/register").permitAll()
+                        .requestMatchers("/register", "/api/**").permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form -> form
                         .loginPage("/login")

@@ -1,17 +1,16 @@
 package com.ecommerce.booksale.book;
 
 
-import com.ecommerce.booksale.book.category.Category;
+
 import com.ecommerce.booksale.book.category.CategoryRepository;
 import com.ecommerce.booksale.exception.NotFoundException;
 import lombok.AllArgsConstructor;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -41,6 +40,21 @@ public class BookService {
     public List<BookDTO> getBookBySubCategoryId(int id){
 
         List<Book> books = bookRepository.findBySubCategoryId(id);
+
+        // throw exception
+        if (books.isEmpty() || books == null){
+            throw new NotFoundException("Mục sản phẩm đang trống");
+        }
+
+        List<BookDTO> dataBooks = books.stream().map(BookMapper::toDTO).collect(Collectors.toList());
+
+        return dataBooks;
+    }
+
+
+    public List<BookDTO> getBookBySubCategoryId(int id, Pageable pageable){
+
+        List<Book> books = bookRepository.findBySubcategoryId(id, pageable);
 
         // throw exception
         if (books.isEmpty() || books == null){

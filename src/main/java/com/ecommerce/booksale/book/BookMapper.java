@@ -16,6 +16,7 @@ public class BookMapper {
         bookDTO.setDiscount(book.getDiscount());
         bookDTO.setMainImg(book.getMainImg());
         bookDTO.setActive(book.isActive());
+        bookDTO.setFinalPrice(handlePrice(book.getPrice(), book.getDiscount()));
         bookDTO.setPrice(book.getPrice());
         bookDTO.setQuantity(book.getQuantity());
         bookDTO.setAuthorId(book.getAuthor().getAuthorId());
@@ -37,5 +38,15 @@ public class BookMapper {
         bookDTO.setImageIds(imageIds);
 
         return bookDTO;
+    }
+
+    private static  String handlePrice(double price, int discount){
+        double finalPrice = price * (1 - discount/100);
+
+        int resultPrice = (int)Math.round(finalPrice);
+
+        String result = resultPrice + "";
+
+        return result;
     }
 }
