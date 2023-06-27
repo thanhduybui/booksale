@@ -5,6 +5,7 @@ import com.ecommerce.booksale.book.BookDTO;
 import com.ecommerce.booksale.book.BookService;
 import com.ecommerce.booksale.book.category.Category;
 import com.ecommerce.booksale.book.category.CategoryService;
+import com.ecommerce.booksale.book.subcategory.SubCategory;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -25,16 +26,13 @@ public class HomeController {
     @GetMapping("/")
     public String renderHomePage(Model theModel) {
 
-        Pageable pageable = PageRequest.of(0, 7);
-
         // get all books from service
         List<Book> books = bookService.findTopBooks();
 
-        List<BookDTO> fictionBooks = bookService.getBookBySubCategoryId(1, pageable);
 
         // add attributes to model
+        bookService.getHomeBookData(theModel);
         theModel.addAttribute("books", books);
-        theModel.addAttribute("fictionBooks", fictionBooks);
 
 
         return "index";

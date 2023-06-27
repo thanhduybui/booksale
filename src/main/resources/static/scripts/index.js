@@ -191,14 +191,16 @@ const categoryLinkEl = document.querySelectorAll(".bs-link");
 
 categoryLinkEl.forEach((link) => {
   link.addEventListener("click", (event) => {
-    removeSelectedLinks();
+  const listContainer = event.target.closest(".bookshelf-list");
+    removeSelectedLinks(listContainer);
     event.target.parentElement.classList.add("selected");
   });
 });
 
 // remove current selected link
-function removeSelectedLinks() {
-  categoryLinkEl.forEach((link) => {
+function removeSelectedLinks(listContainer) {
+    console.log(listContainer);
+  listContainer.querySelectorAll(".bs-link").forEach((link) => {
     link.parentElement.classList.remove("selected");
   });
 }
