@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{ common/head.html :: common_header(~{::title},~{::link}) }">
-    <title>Category Book</title>
+    <title th:text="${categoryName}"></title>
 
     <link rel="stylesheet" th:href="@{/css/book.css}" >
 
@@ -62,27 +62,28 @@
             </ul>
         </nav>
         <div class="category-books">
-            <h2 class="heading-secondary margin-bottom-super">
-                Tiểu thuyết văn học
+            <h2 class="heading-secondary margin-bottom-super" th:text="${categoryName}">
+
             </h2>
             <div class="books grid grid-4--columns">
-                <div class="book-card"  th:each="i : ${#numbers.sequence(1, 12)}">
-                    <span class="discount-tag">-30%</span>
+<!--                <div class="book-card"  th:each="i : ${#numbers.sequence(1, 12)}">-->
+                <div class="book-card"  th:each="book : ${books}">
+                    <span class="discount-tag" th:text="'-' + ${book.discount} + '%'"></span>
                     <img
-                            th:src="@{/imgs/top-books/book1.jpeg}"
+                            th:src="${book.mainImg}"
                             alt="Book Cover"
                             class="card-img"
                     />
                     <div class="card-body">
-                        <h3 class="card-title">Cây cam ngọt của tôi</h3>
+                        <h3 class="card-title" th:text="${book.title}"></h3>
                         <div class="rating card-rating" >
                   <span class="rating-number">4.8</span
                   ><span><ion-icon name="star"></ion-icon></span
                         ><span class="rating-text">Đã bán 200</span>
                         </div>
                         <div class="card-prices">
-                            <span class="card-discount">76.000đ</span>
-                            <span class="card-price">100.000đ</span>
+                            <span class="card-discount" th:text="${book.finalPrice} + 'đ'"></span>
+                            <span class="card-price" th:text="${book.price} + 'đ'"></span>
                         </div>
                         <a href="#" class="card-link">mua sách &rarr;</a>
                     </div>

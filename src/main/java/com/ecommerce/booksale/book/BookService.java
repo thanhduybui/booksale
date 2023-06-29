@@ -41,6 +41,15 @@ public class BookService {
         return bookRepository.findByCategoryId(id);
     }
 
+    public List<BookDTO> getBookByCategoryIdWithPaging(int id, int pageNumber, int quantity){
+        Pageable pageable = PageRequest.of(pageNumber, quantity);
+        List<Book> books =  bookRepository.findByCategoryId(id, pageable);
+
+        List<BookDTO> bookData = books.stream().map(BookMapper::toDTO).collect(Collectors.toList());
+
+        return bookData;
+    }
+
     public List<BookDTO> getBookBySubCategoryId(int id){
 
         List<Book> books = bookRepository.findBySubCategoryId(id);

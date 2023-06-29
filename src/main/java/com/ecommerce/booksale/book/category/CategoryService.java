@@ -50,6 +50,10 @@ public class CategoryService {
         return categoryMap;
     }
 
+    public Category getCategoryById(int id){
+        return categoryRepository.findById(id).orElseThrow(() -> new NotFoundException("Không có danh mục này"));
+    }
+
 
 
 

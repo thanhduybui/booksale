@@ -829,13 +829,13 @@ WHERE c.category_id = 2;
 
 -- // INSERT BOOK_CATEGORY PROCEDURE
 DELIMITER //
-CREATE PROCEDURE InsertBookCategories()
+CREATE PROCEDURE InsertBookCategories(IN start_id INT, IN end_id INT, IN category_id INT)
 BEGIN
-    DECLARE counter INT DEFAULT 1;
+    DECLARE counter INT DEFAULT start_id;
 
-    WHILE counter <= 79 DO
+    WHILE counter <= end_id DO
         INSERT INTO Book_Category (book_id, category_id)
-        VALUES (counter, 1);
+        VALUES (counter, category_id);
         SET counter = counter + 1;
     END WHILE;
 END //
@@ -856,7 +856,7 @@ END //
 
 DELIMITER ;
 
-
+-- INSERT DATA TO BOOK_SUBCATEGORY TABLE
 Call InsertBookSubCategories(1, 40, 1); -- insert classic fiction books
 Call InsertBookSubCategories(41, 59, 2); -- insert classic vietnamese fiction books
 Call InsertBookSubCategories(60, 119, 3); -- insert classic vietnamese fiction books
@@ -864,6 +864,16 @@ Call InsertBookSubCategories(120, 139, 15); -- insert sách thiếu nhi
 Call InsertBookSubCategories(140, 159, 16); -- insert truyện tranh
 Call InsertBookSubCategories(160, 178, 13); -- insert sách tâm lý
 
+-- INSERT DATA TO BOOK_CATEGORY TABLE
+Call InsertBookCategories(1, 119, 1); -- insert sách tiểu thuyết - văn học
+Call InsertBookCategories(161, 178, 6); -- insert sách kỹ năng
+Call InsertBookCategories(12, 159, 7); -- insert sách thiếu nhi
+
+
+
+
+
+ 
 
 
 
