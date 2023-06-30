@@ -189,9 +189,12 @@ function titleHandler(title) {
 // HANDLE TAB ON CATEGORY BOOK
 const categoryLinkEl = document.querySelectorAll(".bs-link");
 
+console.log(categoryLinkEl);
+
 categoryLinkEl.forEach((link) => {
   link.addEventListener("click", (event) => {
-  const listContainer = event.target.closest(".bookshelf-list");
+    console.log("CLICK");
+    const listContainer = event.target.closest(".bookshelf-list");
     removeSelectedLinks(listContainer);
     event.target.parentElement.classList.add("selected");
   });
@@ -199,9 +202,30 @@ categoryLinkEl.forEach((link) => {
 
 // remove current selected link
 function removeSelectedLinks(listContainer) {
-    console.log(listContainer);
   listContainer.querySelectorAll(".bs-link").forEach((link) => {
     link.parentElement.classList.remove("selected");
   });
 }
 
+
+//sticky navigation
+
+const sectionSliderEl = document.querySelector(".section-slider");
+const obs = new IntersectionObserver(
+  (entries) => {
+    const ent = entries[0];
+    if (!ent.isIntersecting) {
+      document.querySelector("header").classList.add("sticky");
+    }
+    if (ent.isIntersecting) {
+      document.querySelector("header").classList.remove("sticky");
+    }
+  },
+  {
+    // in the viewport
+    root: null,
+    threshold: 0,
+    rootMargin: "-180px",
+  }
+);
+obs.observe(sectionSliderEl);
