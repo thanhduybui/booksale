@@ -2,6 +2,7 @@ package com.ecommerce.booksale.config;
 
 
 import com.ecommerce.booksale.book.category.Category;
+import com.ecommerce.booksale.book.category.CategoryDTO;
 import com.ecommerce.booksale.book.category.CategoryRepository;
 import com.ecommerce.booksale.book.category.CategoryService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,7 +21,7 @@ public class Interceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        List<Category> categories = categoryService.getAllCategories();
+        List<CategoryDTO> categories = categoryService.getAllCategories();
         request.setAttribute("categories", categories);
         return true;
     }

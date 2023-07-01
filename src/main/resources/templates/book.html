@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{ common/head.html :: common_header(~{::title},~{::link}) }">
-    <title th:text="${categoryName}"></title>
+    <title th:text="${category.name}"></title>
 
     <link rel="stylesheet" th:href="@{/css/book.css}" >
 
@@ -32,17 +32,8 @@
                 </span>
                     </a>
                     <ul class="sub-items">
-                        <li class="sub-item">
-                            <a href="#" class="sub-item-link">Văn học việt nam</a>
-                        </li>
-                        <li class="sub-item">
-                            <a href="#" class="sub-item-link">Văn học nước ngoài</a>
-                        </li>
-                        <li class="sub-item">
-                            <a href="#" class="sub-item-link">Thiếu nhi</a>
-                        </li>
-                        <li class="sub-item">
-                            <a href="#" class="sub-item-link">Trinh thám</a>
+                        <li class="sub-item" th:each="subCat : ${subcategories}">
+                            <a href="#" th:href="@{__${requestURI}__?sub=__${subCat.subCategoryId}__}" class="sub-item-link" th:text="${subCat.name}"></a>
                         </li>
                     </ul>
                 </li>
@@ -62,11 +53,9 @@
             </ul>
         </nav>
         <div class="category-books">
-            <h2 class="heading-secondary margin-bottom-super" th:text="${categoryName}">
-
+            <h2 class="heading-secondary margin-bottom-super" th:text="${category.name}">
             </h2>
             <div class="books grid grid-4--columns">
-<!--                <div class="book-card"  th:each="i : ${#numbers.sequence(1, 12)}">-->
                 <div class="book-card"  th:each="book : ${books}">
                     <span class="discount-tag" th:text="'-' + ${book.discount} + '%'"></span>
                     <img

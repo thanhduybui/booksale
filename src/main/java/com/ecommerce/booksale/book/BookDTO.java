@@ -27,5 +27,4 @@ public class BookDTO {
     private List<Integer> subcategoryIds;
     private List<Integer> imageIds;
 
-
 }

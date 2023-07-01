@@ -4,17 +4,16 @@ package com.ecommerce.booksale.book.category;
 import com.ecommerce.booksale.exception.NotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
+
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import java.util.stream.Collectors;
+
 
 @Getter
 @Setter
@@ -25,8 +24,15 @@ public class CategoryService {
     private final CategoryRepository categoryRepository;
 
     @Cacheable("categories")
-    public List<Category> getAllCategories() {
-        return categoryRepository.findAll();
+    public List<CategoryDTO> getAllCategories() {
+
+
+
+        List<Category> categories = categoryRepository.findAll();
+        List<CategoryDTO> categoriesDTO = categories.stream()
+                                                    .map(CategoryMapper::toDTO)
+                                                    .collect(Collectors.toList());
+        return categoriesDTO;
     }
 
     public Map<String, Category> getHomeCategories(){

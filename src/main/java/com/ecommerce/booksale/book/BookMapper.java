@@ -3,7 +3,6 @@ import com.ecommerce.booksale.book.category.Category;
 import com.ecommerce.booksale.book.image.Image;
 import com.ecommerce.booksale.book.subcategory.SubCategory;
 
-import java.awt.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
