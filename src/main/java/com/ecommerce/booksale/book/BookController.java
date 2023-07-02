@@ -37,6 +37,7 @@ public class BookController {
         List<SubCategory> subCategories = subCategoryService.getSubcategoriesByCategory(cat);
 
         // add data to model
+        model.addAttribute("path", kebabCategoryName);
         model.addAttribute("requestURI", requestURI);
         model.addAttribute("category", cat);
         model.addAttribute("books", books);

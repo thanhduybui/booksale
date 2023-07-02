@@ -80,20 +80,20 @@
             </div>
 
             <div class="pagination">
-                <button class="pagination-btn prev">
+                <button class="pagination-btn prev" th:path="${path}">
                     <ion-icon name="chevron-back-outline"></ion-icon>
                 </button>
 
                 <div class="pages">
-                    <a href="#" class="pagination-btn active">1</a>
-                    <a href="#" class="pagination-btn">2</a>
-                    <a href="#" class="pagination-btn">3</a>
-                    <a href="#" class="pagination-btn">4</a>
-                    <a class="pagination-btn">...</a>
+                    <a  class="pagination-btn active">1</a>
+                    <a  class="pagination-btn">2</a>
+                    <a  class="pagination-btn">3</a>
+                    <a  class="pagination-btn">4</a>
+                    <a  class="pagination-btn">...</a>
                 </div>
 
-                <button class="pagination-btn next">
-                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                <button class="pagination-btn next" th:path="${path}">
+                    <ion-icon name="chevron-forward-outline" ></ion-icon>
                 </button>
             </div>
         </div>
