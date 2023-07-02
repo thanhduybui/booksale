@@ -5,6 +5,8 @@ package com.ecommerce.booksale.book;
 import com.ecommerce.booksale.book.category.Category;
 import com.ecommerce.booksale.book.category.CategoryRepository;
 import com.ecommerce.booksale.book.category.CategoryService;
+import com.ecommerce.booksale.book.subcategory.SubCategory;
+import com.ecommerce.booksale.book.subcategory.SubCategoryService;
 import com.ecommerce.booksale.exception.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -23,6 +25,7 @@ public class BookService {
 
     private final BookRepository bookRepository;
     private final CategoryService categoryService;
+    private final SubCategoryService subCategoryService;
 
     // get All books
     public List<Book> findAllBooks(){
@@ -37,37 +40,24 @@ public class BookService {
         return pageBooks.getContent();
     }
 
-    public List<Book> getBookByCategoryId(int id){
-        return bookRepository.findByCategoryId(id);
-    }
 
     public List<BookDTO> getBookByCategoryIdWithPaging(int id, int pageNumber, int quantity){
         Pageable pageable = PageRequest.of(pageNumber, quantity);
-        List<Book> books =  bookRepository.findByCategoryId(id, pageable);
+
+        Category category = categoryService.getCategoryById(id);
+        Page<Book> books =  bookRepository.findByCategories(category, pageable);
 
         List<BookDTO> bookData = books.stream().map(BookMapper::toDTO).collect(Collectors.toList());
 
         return bookData;
     }
 
-    public List<BookDTO> getBookBySubCategoryId(int id){
-
-        List<Book> books = bookRepository.findBySubCategoryId(id);
-
-        // throw exception
-        if (books.isEmpty() || books == null){
-            throw new NotFoundException("Mục sản phẩm đang trống");
-        }
-
-        List<BookDTO> dataBooks = books.stream().map(BookMapper::toDTO).collect(Collectors.toList());
-
-        return dataBooks;
-    }
-
 
     public List<BookDTO> getBookBySubCategoryId(int id, Pageable pageable){
 
-        List<Book> books = bookRepository.findBySubcategoryId(id, pageable);
+        SubCategory subcategory = subCategoryService.getSubcategoryById(id);
+
+        List<Book> books = bookRepository.findBySubcategories(subcategory, pageable);
 
         // throw exception
         if (books.isEmpty() || books == null){
@@ -94,9 +84,9 @@ public class BookService {
         List<BookDTO> bookData = null;
 
         for (String category : categoryMap.keySet()){
-            books = bookRepository.findBySubcategoryId(categoryMap.get(category)
+            books = bookRepository.findBySubcategories(categoryMap.get(category)
                     .getSubCategories().get(0)
-                    .getSubCategoryId(), pageable);
+                    , pageable);
 
             bookData = books.stream().map(BookMapper::toDTO).collect(Collectors.toList());
 
@@ -104,6 +94,28 @@ public class BookService {
 
         }
 
+    }
+
+    public BookPaging getPagingBooks(Category category, int currentPage, int itemsPerPage ){
+
+
+        Pageable pageable = PageRequest.of(currentPage, itemsPerPage);
+        Page<Book> bookPaging = bookRepository.findByCategories(category, pageable);
+
+        List<Book> booksRaw = bookPaging.getContent();
+
+        // convert List<Book> to List<BookDTO>
+        List<BookDTO> bookDTOList = booksRaw.stream().map(BookMapper::toDTO).collect(Collectors.toList());
+
+       BookPaging bookPagingData = new BookPaging();
+
+       // set property
+       bookPagingData.setBooks(bookDTOList);
+       bookPagingData.setTotalPages(bookPaging.getTotalPages());
+       bookPagingData.setCurrentPage(bookPaging.getNumber());
+       bookPagingData.setNumberOfBooks(bookPaging.getNumberOfElements());
+
+       return bookPagingData;
     }
 
 

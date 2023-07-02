@@ -1,6 +1,7 @@
 package com.ecommerce.booksale.book;
 
 import com.ecommerce.booksale.book.category.Category;
+import com.ecommerce.booksale.book.subcategory.SubCategory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,16 +20,8 @@ public interface BookRepository extends JpaRepository<Book, Long>, PagingAndSort
 
     Page<Book> findAll(Pageable pageable);
 
+    Page<Book> findByCategories(Category category, Pageable pageable);
 
-    @Query("SELECT b FROM Book b JOIN b.categories c WHERE c.categoryId = :categoryId")
-    List<Book> findByCategoryId(@Param("categoryId") int categoryId);
+    List<Book> findBySubcategories(SubCategory subCategory, Pageable pageable);
 
-    @Query("SELECT b FROM Book b JOIN b.categories c WHERE c.categoryId = :categoryId")
-    List<Book> findByCategoryId(@Param("categoryId") int categoryId, Pageable pageable);
-
-    @Query("SELECT b FROM Book b JOIN b.Subcategories c WHERE c.subCategoryId = :subCategoryId")
-    List<Book> findBySubCategoryId(@Param("subCategoryId") int subCategoryId);
-
-    @Query("SELECT b FROM Book b JOIN b.Subcategories c WHERE c.subCategoryId = :subCategoryId")
-    List<Book> findBySubcategoryId(@Param("subCategoryId") int subCategoryId, Pageable pageable);
 }

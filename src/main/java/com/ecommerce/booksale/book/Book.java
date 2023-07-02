@@ -72,8 +72,7 @@ public class Book {
     @JoinTable(name="Book_Subcategory",
             joinColumns = @JoinColumn(name="book_id"),
             inverseJoinColumns = @JoinColumn(name="subcategory_id"))
-    @JsonIgnore
-    private List<SubCategory> Subcategories;
+    private List<SubCategory> subcategories;
 
     @OneToMany(mappedBy = "book" , cascade =
                     {CascadeType.DETACH, CascadeType.MERGE,
