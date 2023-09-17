@@ -34,13 +34,18 @@ public class WebSecurityConfig {
         throws Exception{
         http.authorizeHttpRequests(request ->
                 request
-                        .requestMatchers("/register", "/api/**").permitAll()
-                        .anyRequest().authenticated())
+                        .requestMatchers("/", "/book/**", "/register", "/api/**").permitAll()
+                        .requestMatchers("/customer/**").hasRole("CUSTOMER")
+                        .requestMatchers("/system/**").hasRole("ADMIN")
+                        .anyRequest().authenticated()
+                        )
                 .formLogin(form -> form
                         .loginPage("/login")
                         .loginProcessingUrl("/authenticateTheUser")
                         .permitAll())
-                .logout(logout -> logout.permitAll());
+                .logout(logout -> logout
+                        .permitAll()
+                        .logoutSuccessUrl("/"));
         http.httpBasic(Customizer.withDefaults());
         http.csrf(csrf-> csrf.disable());
 

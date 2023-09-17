@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{ common/head.html :: common_header(~{::title},~{}) }">
+  <title>The BookSale</title>
+</head>
+
+<body>
+<!-- HEADER -->
+<header>
+  <section th:replace="~{common/header.html :: copy}"></section>
+</header>
+
+<!-- MAIN CONTENT -->
+<main>
+  <h1>BOOK DETAIL PAGE</h1>
+</main>
+
+<!-- FOOTER -->
+<footer th:replace="~{common/footer.html :: copy}"></footer>
+
+<script
+        type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+></script>
+<script
+        nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+></script>
+
+</body>
+</html>

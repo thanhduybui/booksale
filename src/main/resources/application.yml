@@ -35,11 +35,11 @@ spring:
           writetimeout: 5000
 
 
-logging:
-  level:
-    org:
-      hibernate:
-        SQL: debug
+#logging:
+#  level:
+#    org:
+#      hibernate:
+#        SQL: debug
 
     root: INFO
     org.springframework.security: DEBUG

@@ -657,6 +657,7 @@ header {
 }
 .btn-bs-all {
   background-color: #fab005;
+  text-decoration: none;
 }
 
 .btn-bs-all:hover {

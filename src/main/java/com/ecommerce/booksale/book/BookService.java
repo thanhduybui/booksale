@@ -3,6 +3,7 @@ package com.ecommerce.booksale.book;
 
 
 import com.ecommerce.booksale.book.category.Category;
+import com.ecommerce.booksale.book.category.CategoryDTO;
 import com.ecommerce.booksale.book.category.CategoryRepository;
 import com.ecommerce.booksale.book.category.CategoryService;
 import com.ecommerce.booksale.book.subcategory.SubCategory;
@@ -74,8 +75,7 @@ public class BookService {
     // this data will use for home page of the website
     public void getHomeBookData(Model model){
 
-        Map<String, Category> categoryMap = categoryService.getHomeCategories();
-
+        Map<String, CategoryDTO> categoryMap = categoryService.getHomeCategories();
         model.addAttribute("categoriesMap", categoryMap);
 
         Pageable pageable = PageRequest.of(0, 7);
@@ -83,15 +83,14 @@ public class BookService {
         List<Book> books = null;
         List<BookDTO> bookData = null;
 
+        // create list books base on categories
         for (String category : categoryMap.keySet()){
-            books = bookRepository.findBySubcategories(categoryMap.get(category)
-                    .getSubCategories().get(0)
+            books = bookRepository.findBySubcategories(categoryMap.get(category).getSubcategories().get(0)
                     , pageable);
 
             bookData = books.stream().map(BookMapper::toDTO).collect(Collectors.toList());
 
             model.addAttribute(category+"Books", bookData);
-
         }
 
     }

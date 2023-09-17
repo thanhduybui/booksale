@@ -46,5 +46,10 @@ public class BookController {
         return "book";
     }
 
+    @GetMapping("/book/{id}")
+    public String accessBuyPage( @PathVariable("id") String bookId ){
+        return "book-sell-page";
+    }
+
 
 }
