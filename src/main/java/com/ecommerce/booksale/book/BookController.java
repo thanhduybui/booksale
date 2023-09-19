@@ -35,14 +35,13 @@ public class BookController {
         // get subcategory by category
         Category cat = categoryService.getCategoryById(categoryId);
         List<SubCategory> subCategories = subCategoryService.getSubcategoriesByCategory(cat);
-
         // add data to model
         model.addAttribute("path", kebabCategoryName);
         model.addAttribute("requestURI", requestURI);
         model.addAttribute("category", cat);
         model.addAttribute("books", books);
         model.addAttribute("subcategories", subCategories);
-
+        // return view
         return "book";
     }
 
@@ -50,6 +49,4 @@ public class BookController {
     public String accessBuyPage( @PathVariable("id") String bookId ){
         return "book-sell-page";
     }
-
-
 }

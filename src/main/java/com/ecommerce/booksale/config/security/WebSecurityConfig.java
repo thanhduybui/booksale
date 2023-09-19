@@ -34,7 +34,7 @@ public class WebSecurityConfig {
         throws Exception{
         http.authorizeHttpRequests(request ->
                 request
-                        .requestMatchers("/", "/book/**", "/register", "/api/**").permitAll()
+                        .requestMatchers("/", "/cart/**", "/book/**", "/register", "/api/**").permitAll()
                         .requestMatchers("/customer/**").hasRole("CUSTOMER")
                         .requestMatchers("/system/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
