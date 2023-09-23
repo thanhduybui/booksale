@@ -4,11 +4,11 @@ package com.ecommerce.booksale.book;
 
 import com.ecommerce.booksale.book.category.Category;
 import com.ecommerce.booksale.book.category.CategoryDTO;
-import com.ecommerce.booksale.book.category.CategoryRepository;
 import com.ecommerce.booksale.book.category.CategoryService;
 import com.ecommerce.booksale.book.subcategory.SubCategory;
 import com.ecommerce.booksale.book.subcategory.SubCategoryService;
-import com.ecommerce.booksale.exception.NotFoundException;
+import com.ecommerce.booksale.exception.CategoryNotFoundException;
+import com.ecommerce.booksale.exception.BookNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -43,14 +43,22 @@ public class BookService {
 
 
     public List<BookDTO> getBookByCategoryIdWithPaging(int id, int pageNumber, int quantity){
-        Pageable pageable = PageRequest.of(pageNumber, quantity);
+            Pageable pageable = PageRequest.of(pageNumber, quantity);
+            Category category = categoryService.getCategoryById(id);
 
-        Category category = categoryService.getCategoryById(id);
-        Page<Book> books =  bookRepository.findByCategories(category, pageable);
+            if (category == null){
+                throw new CategoryNotFoundException("Category not found for id = " + id);
+            }
 
-        List<BookDTO> bookData = books.stream().map(BookMapper::toDTO).collect(Collectors.toList());
+            Page<Book> books =  bookRepository.findByCategories(category, pageable);
+            if (!books.hasContent()){
+                throw new BookNotFoundException("Book not found for category = " + category.getName() );
+            }
 
-        return bookData;
+            List<BookDTO> bookData = books.stream().map(BookMapper::toDTO).collect(Collectors.toList());
+
+            return bookData;
+
     }
 
 
@@ -62,7 +70,7 @@ public class BookService {
 
         // throw exception
         if (books.isEmpty() || books == null){
-            throw new NotFoundException("Mục sản phẩm đang trống");
+            throw new BookNotFoundException("Mục sản phẩm đang trống");
         }
 
         List<BookDTO> dataBooks = books.stream().map(BookMapper::toDTO).collect(Collectors.toList());
@@ -97,10 +105,10 @@ public class BookService {
 
     public BookPaging getPagingBooks(Category category, int currentPage, int itemsPerPage ){
 
-
         Pageable pageable = PageRequest.of(currentPage, itemsPerPage);
         Page<Book> bookPaging = bookRepository.findByCategories(category, pageable);
 
+        // retrive book data from the Page<Book> object
         List<Book> booksRaw = bookPaging.getContent();
 
         // convert List<Book> to List<BookDTO>
@@ -115,6 +123,11 @@ public class BookService {
        bookPagingData.setNumberOfBooks(bookPaging.getNumberOfElements());
 
        return bookPagingData;
+    }
+
+    public Book findBook(Integer bookId) throws BookNotFoundException {
+        Book foundBook = this.bookRepository.findById(bookId).orElseThrow(() -> new BookNotFoundException("Book was not found"));
+        return foundBook;
     }
 
 

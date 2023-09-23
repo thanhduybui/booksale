@@ -573,11 +573,11 @@ header {
 }
 
 .card-img {
-  width: 100%;
-  max-width: 12rem;
-  height: auto;
-  margin: 0 auto;
+   width: 12rem;
+   height: 18rem;
+   margin: 0 auto;
 }
+
 
 .card-body {
   padding: 1rem 1.2rem 1.2rem 1.2rem;

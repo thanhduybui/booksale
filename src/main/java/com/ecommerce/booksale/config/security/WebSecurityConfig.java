@@ -8,7 +8,6 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -34,9 +33,10 @@ public class WebSecurityConfig {
         throws Exception{
         http.authorizeHttpRequests(request ->
                 request
-                        .requestMatchers("/", "/cart/**", "/book/**", "/register", "/api/**").permitAll()
+                        .requestMatchers("/", "/error/*", "/cart/**", "/book/**", "/register", "/api/**").permitAll()
                         .requestMatchers("/customer/**").hasRole("CUSTOMER")
                         .requestMatchers("/system/**").hasRole("ADMIN")
+                        .requestMatchers("/imgs/**", "/css/**", "/scripts/**").permitAll()
                         .anyRequest().authenticated()
                         )
                 .formLogin(form -> form
@@ -52,8 +52,8 @@ public class WebSecurityConfig {
         return http.build();
     }
 
-    @Bean
-    public WebSecurityCustomizer ignoringCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/imgs/**", "/css/**", "/scripts/**");
-    }
+//    @Bean
+//    public WebSecurityCustomizer ignoringCustomizer() {
+//        return (web) -> web.ignoring().requestMatchers("/imgs/**", "/css/**", "/scripts/**");
+//    }
 }
