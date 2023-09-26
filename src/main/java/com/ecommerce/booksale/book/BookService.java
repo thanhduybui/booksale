@@ -1,7 +1,5 @@
 package com.ecommerce.booksale.book;
 
-
-
 import com.ecommerce.booksale.book.category.Category;
 import com.ecommerce.booksale.book.category.CategoryDTO;
 import com.ecommerce.booksale.book.category.CategoryService;
@@ -125,10 +123,9 @@ public class BookService {
        return bookPagingData;
     }
 
-    public Book findBook(Integer bookId) throws BookNotFoundException {
+    public BookDTO findBook(Integer bookId) throws BookNotFoundException {
         Book foundBook = this.bookRepository.findById(bookId).orElseThrow(() -> new BookNotFoundException("Book was not found"));
-        return foundBook;
+        BookDTO bookData = BookMapper.toDTO(foundBook);
+        return bookData;
     }
-
-
 }

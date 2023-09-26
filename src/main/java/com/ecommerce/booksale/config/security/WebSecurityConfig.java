@@ -33,7 +33,7 @@ public class WebSecurityConfig {
         throws Exception{
         http.authorizeHttpRequests(request ->
                 request
-                        .requestMatchers("/", "/error/*", "/cart/**", "/book/**", "/register", "/api/**").permitAll()
+                        .requestMatchers("/", "/error/*", "/add-to-cart/**", "/cart/**", "/book/**", "/register", "/api/**").permitAll()
                         .requestMatchers("/customer/**").hasRole("CUSTOMER")
                         .requestMatchers("/system/**").hasRole("ADMIN")
                         .requestMatchers("/imgs/**", "/css/**", "/scripts/**").permitAll()

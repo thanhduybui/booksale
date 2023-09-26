@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -50,13 +51,15 @@ public class BookController {
     public String accessBuyPage( @PathVariable("id") String bookId, Model model){
 
             int id = Integer.parseInt(bookId);
-            Book foundBook = this.bookService.findBook(id);
+            BookDTO foundBook = this.bookService.findBook(id);
 
             if (foundBook == null) {
                 throw new BookNotFoundException("Not found the book for id = " + bookId );
             }
             model.addAttribute("book", foundBook );
             return "book-sell-page";
-
     }
+
+
+
 }

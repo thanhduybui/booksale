@@ -21,8 +21,6 @@ CREATE TABLE Categories (
 )auto_increment=1;
 
 
-
-
 DROP TABLE IF EXISTS `subcategories`;
 CREATE TABLE Sub_categories (
   subcategory_id int PRIMARY KEY auto_increment,
@@ -51,10 +49,13 @@ CREATE TABLE Books (
   publisher_id int,
   publication_year INT,
   discount int,
+  description text,
+  cover_type varchar(20),
   main_img text,
   price DECIMAL(10, 3),
   quantity INT,
   category_id int,
+  total_pages int,
   subcategory_id int,
   is_active tinyint,
   
@@ -186,10 +187,10 @@ CREATE TABLE Orders (
   user_id bigint,
   order_date DATE,
   total_price DECIMAL(10, 2),
+  status tinyint default 0,
   constraint `FK_orders_customer` FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
 
-ALTER TABLE Orders ADD column status tinyint default 0;
 
 DROP TABLE IF EXISTS `Order_Items`;
 CREATE TABLE Order_Items (

@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ModelAndView handleError(Exception ex){
+        System.out.println(ex.getLocalizedMessage());
         return new ModelAndView("500");
     }
 }
