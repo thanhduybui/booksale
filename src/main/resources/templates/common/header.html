@@ -41,7 +41,7 @@
               <a th:href="@{/cart}" class="cart header-link"
               ><ion-icon class="cart-icon" name="cart-sharp"></ion-icon
               ></a>
-              <span class="cart-quantity">0</span>
+              <span class="cart-quantity" th:text="${cart != null ? cart.items.size() : '0'}"></span>
             </li>
             <li class="main-nav-item" sec:authorize="isAnonymous()">
               <a th:href="@{/login}" class="header-link">Đăng nhập</a>

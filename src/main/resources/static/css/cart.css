@@ -53,6 +53,7 @@
 .cart-book-title {
   font-size: 1.6rem;
   min-width: 10rem;
+  max-width: 10rem;
 }
 
 .price-tag {

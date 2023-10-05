@@ -57,6 +57,7 @@
               </div>
               <div class="cart-book" th:each="item: ${cart.items}">
                 <form class="cart-book__form">
+                  <input type="hidden" class="book-id" th:value="${item.bookId}">
                   <input type="checkbox" class="checkbox margin-right-md" />
                   <div class="img-box margin-right-sm">
                     <img class="cart-img" th:src="${item.imgUrl}" th:alt="${item.bookTitle}" />
@@ -214,6 +215,8 @@
     <footer th:replace="~{common/footer.html :: copy}" >
     </footer>
 
+    <script defer th:src="@{/scripts/cart.js}"></script>
+    <script defer th:src="@{/scripts/user.js}"></script>
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
