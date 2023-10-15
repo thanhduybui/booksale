@@ -92,29 +92,29 @@ export const sliderHandler = function () {
 };
 
 
-export const renderCard = (book)=> {
-     return `<div class="book-card">
-                  <a href="book-detail.html" class="book-link">
-                    <span class="discount-tag">-${book.discount}%</span>
-                    <div class="img-container">
-                      <img
-                        src=${book.mainImg}
-                        alt="Book Cover"
-                        class="card-img"
-                      />
-                    </div>
-                    <div class="card-body">
-                      <p class="card-title">${book.title}</p>
-                      <div class="rating" class="card-rating">
-                        <span class="rating-number">4.8</span
-                        ><span><ion-icon name="star"></ion-icon></span
-                        ><span class="rating-text">Đã bán 200</span>
-                      </div>
-                      <div class="card-prices">
-                        <span class="card-discount">${book.finalPrice}đ</span>
-                        <span class="card-price">${book.price}đ</span>
-                      </div>
-                    </div>
-                  </a>
-                </div>`;
+export function renderCard(book) {
+  return `<div class="book-card">
+              <a href="http://localhost:8080/booksale/book/${book.bookId}" class="book-link">
+                <span class="discount-tag">-${book.discount}%</span>
+                <div class="img-container">
+                  <img
+                    src=${book.mainImg}
+                    alt="Book Cover"
+                    class="card-img"
+                  />
+                </div>
+                <div class="card-body">
+                  <p class="card-title">${book.title}</p>
+                  <div class="rating" class="card-rating">
+                    <span class="rating-number">4.8</span
+                    ><span><ion-icon name="star"></ion-icon></span
+                    ><span class="rating-text">Đã bán 200</span>
+                  </div>
+                  <div class="card-prices">
+                    <span class="card-discount">${book.finalPrice}đ</span>
+                    <span class="card-price">${book.price}đ</span>
+                  </div>
+                </div>
+              </a>
+            </div>`;
 }
