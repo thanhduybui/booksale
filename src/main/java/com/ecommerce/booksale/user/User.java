@@ -3,7 +3,7 @@ package com.ecommerce.booksale.user;
 
 import com.ecommerce.booksale.order.Order;
 import com.ecommerce.booksale.user.role.Role;
-import com.ecommerce.booksale.registration.token.ConfirmationToken;
+import com.ecommerce.booksale.authentication.registration.token.ConfirmationToken;
 import com.ecommerce.booksale.user.address.Address;
 import jakarta.persistence.*;
 import lombok.*;

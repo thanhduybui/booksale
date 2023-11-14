@@ -61,70 +61,11 @@
       <div class="relevant-books">
         <h1 class="heading-tertiary margin-bottom-md">Sách liên quan</h1>
         <div class="relevant-books-list">
-          <div class="relevant-book">
-            <a href="#" class="relevant-book-link">
-              <img
-                      th:src="@{/imgs/top-books/book1.jpeg}"
-                      alt="Book's image"
-                      class="relevant-book-img"
-              />
-              <p class="relevant-book-title">Số đỏ (Tái bản 2020)</p>
-              <p class="relevant-book-price">60.000<span>đ</span></p>
-            </a>
-          </div>
-          <div class="relevant-book">
-            <a href="#" class="relevant-book-link">
-              <img
-                      th:src="@{/imgs/top-books/book2.jpeg}"
-                      alt="Book's image"
-                      class="relevant-book-img"
-              />
-              <p class="relevant-book-title">Số đỏ (Tái bản 2020)</p>
-              <p class="relevant-book-price">60.000<span>đ</span></p>
-            </a>
-          </div>
-          <div class="relevant-book">
-            <a href="#" class="relevant-book-link">
-              <img
-                      th:src="@{/imgs/top-books/book3.jpeg}"
-                      alt="Book's image"
-                      class="relevant-book-img"
-              />
-              <p class="relevant-book-title">Số đỏ (Tái bản 2020)</p>
-              <p class="relevant-book-price">60.000<span>đ</span></p>
-            </a>
-          </div>
-          <div class="relevant-book">
-            <a href="#" class="relevant-book-link">
-              <img
-                      th:src="@{/imgs/top-books/book1.jpeg}"
-                      alt="Book's image"
-                      class="relevant-book-img"
-              />
-              <p class="relevant-book-title">Số đỏ (Tái bản 2020)</p>
-              <p class="relevant-book-price">60.000<span>đ</span></p>
-            </a>
-          </div>
-          <div class="relevant-book">
-            <a href="#" class="relevant-book-link">
-              <img
-                      th:src="@{/imgs/top-books/book2.jpeg}"
-                      alt="Book's image"
-                      class="relevant-book-img"
-              />
-              <p class="relevant-book-title">Số đỏ (Tái bản 2020)</p>
-              <p class="relevant-book-price">60.000<span>đ</span></p>
-            </a>
-          </div>
-          <div class="relevant-book">
-            <a href="#" class="relevant-book-link">
-              <img
-                      th:src="@{/imgs/top-books/book3.jpeg}"
-                      alt="Book's image"
-                      class="relevant-book-img"
-              />
-              <p class="relevant-book-title">Số đỏ (Tái bản 2020)</p>
-              <p class="relevant-book-price">60.000<span>đ</span></p>
+          <div class="relevant-book" th:each="book : ${relevantBooks}">
+            <a th:href="@{/book/__${book.bookId}__}" class="relevant-book-link">
+              <img th:src="${book.mainImg}" th:alt="${book.title}" class="relevant-book-img" />
+              <p class="relevant-book-title" th:text="${book.title}"></p>
+              <p class="relevant-book-price" th:text="${book.finalPrice}"><span>đ</span></p>
             </a>
           </div>
         </div>
@@ -215,6 +156,8 @@
     </form>
   </section>
 </main>
+
+<div th:replace="~{modal/add-to-cart-modal.html :: copy}"></div>
 
 <!-- FOOTER -->
 <footer th:replace="~{common/footer.html :: copy}"></footer>

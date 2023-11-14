@@ -25,6 +25,7 @@ public class BookController {
     private final CategoryService categoryService;
     private final SubCategoryService subCategoryService;
     private final HttpServletRequest request;
+    private static final String BOOK_NOT_FOUND = "Book not found for id = ";
 
     @GetMapping("/book/category/{category}")
     public String getBookCategory(@PathVariable("category") String kebabCategoryName, Model model){
@@ -48,15 +49,19 @@ public class BookController {
     }
 
     @GetMapping("/book/{id}")
-    public String accessBuyPage( @PathVariable("id") String bookId,  Model model){
+    public String accessBuyPage( @PathVariable("id") Integer bookId,  Model model){
 
-            int id = Integer.parseInt(bookId);
-            BookDTO foundBook = this.bookService.findBook(id);
+
+            BookDTO foundBook = this.bookService.findBook(bookId);
+            List<BookDTO> relevantBooks = this.bookService.getRelevantBooks(bookId);
 
             if (foundBook == null) {
-                throw new BookNotFoundException("Not found the book for id = " + bookId );
+                throw new BookNotFoundException(BOOK_NOT_FOUND + bookId );
             }
+
+
             model.addAttribute("book", foundBook );
+            model.addAttribute("relevantBooks", relevantBooks);
             return "book-sell-page";
     }
 

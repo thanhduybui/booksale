@@ -1,4 +1,4 @@
-package com.ecommerce.booksale.constants;
+package com.ecommerce.booksale.utils.constants;
 
 public interface PagingConstants {
     public static final Integer DEFAULT_PAGE = 0;
