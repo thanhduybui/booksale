@@ -1,7 +1,7 @@
 package com.ecommerce.booksale.exception;
 
 
-import com.ecommerce.booksale.registration.RegisterData;
+import com.ecommerce.booksale.authentication.registration.RegisterData;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;

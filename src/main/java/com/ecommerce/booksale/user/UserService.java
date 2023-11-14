@@ -1,11 +1,11 @@
 package com.ecommerce.booksale.user;
 
 
-import com.ecommerce.booksale.constants.AuthenError;
+import com.ecommerce.booksale.utils.constants.AuthenError;
 import com.ecommerce.booksale.exception.RoleNotFoundException;
-import com.ecommerce.booksale.registration.RegisterData;
-import com.ecommerce.booksale.registration.token.ConfirmationTokenRepository;
-import com.ecommerce.booksale.registration.token.ConfirmationToken;
+import com.ecommerce.booksale.authentication.registration.RegisterData;
+import com.ecommerce.booksale.authentication.registration.token.ConfirmationTokenRepository;
+import com.ecommerce.booksale.authentication.registration.token.ConfirmationToken;
 import com.ecommerce.booksale.user.role.Role;
 import com.ecommerce.booksale.user.role.RoleRepository;
 import lombok.AllArgsConstructor;

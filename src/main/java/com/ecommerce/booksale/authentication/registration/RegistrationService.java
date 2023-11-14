@@ -1,11 +1,11 @@
-package com.ecommerce.booksale.registration;
+package com.ecommerce.booksale.authentication.registration;
 
 
-import com.ecommerce.booksale.constants.AuthenError;
-import com.ecommerce.booksale.email.EmailSender;
+import com.ecommerce.booksale.authentication.registration.token.ConfirmationToken;
+import com.ecommerce.booksale.authentication.registration.token.ConfirmationTokenService;
+import com.ecommerce.booksale.utils.constants.AuthenError;
+import com.ecommerce.booksale.utils.email.EmailSender;
 import com.ecommerce.booksale.user.User;
-import com.ecommerce.booksale.registration.token.ConfirmationToken;
-import com.ecommerce.booksale.registration.token.ConfirmationTokenService;
 import com.ecommerce.booksale.user.UserRepository;
 import com.ecommerce.booksale.user.UserService;
 import jakarta.transaction.Transactional;

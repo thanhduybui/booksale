@@ -1,4 +1,4 @@
-package com.ecommerce.booksale.login;
+package com.ecommerce.booksale.authentication.login;
 
 
 import com.ecommerce.booksale.book.category.Category;
