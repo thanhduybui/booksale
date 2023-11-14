@@ -26,7 +26,7 @@ public class RegistrationService {
     private final EmailSender emailSender;
     private final ConfirmationTokenService confirmationTokenService;
 
-    public void register(User user, String confirmPassword){
+    public void register(RegisterData user, String confirmPassword){
         if (!checkUserInput(user,confirmPassword)){
             throw new IllegalArgumentException(AuthenError.NOT_MATCH_PASSWORD_ERROR);
         }
@@ -73,7 +73,7 @@ public class RegistrationService {
     }
 
     // this function check if user confirm correct their password
-    public boolean checkUserInput(User user, String confirmPassword){
+    public boolean checkUserInput(RegisterData user, String confirmPassword){
         if (user.getPassword().equals(confirmPassword)){
             return true;
         }
@@ -81,7 +81,7 @@ public class RegistrationService {
     }
 
     // check if the email was exists in db
-    public boolean isValidEmail(User user){
+    public boolean isValidEmail(RegisterData user){
         Optional<User> newUser = userRepository.findByEmail(user.getEmail().trim());
         if (newUser.isPresent()){
             return false;
