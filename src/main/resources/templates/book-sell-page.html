@@ -138,7 +138,7 @@
       </div>
     </div>
     <form class="buy-form" th:action="@{/cart/add-to-cart}" th:method="post">
-      <input type="hidden" th:name="bookId" th:value="${book.bookId}"/>
+      <input type="hidden" class="hidden-book-id" th:name="bookId" th:value="${book.bookId}"/>
       <div class="detail-address margin-bottom-lg">
         <p class="shipped-address">
           Giao đến: <span>An Ninh Tây, Tuy An, Phú Yên</span>

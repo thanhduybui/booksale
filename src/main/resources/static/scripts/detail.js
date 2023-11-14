@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modal = document.querySelector(".modal");
   const closeModal = document.querySelector(".close");
   const modalCloseButton = document.querySelector("#modalCloseButton");
-
+  const bookId = document.querySelector(".hidden-book-id").value;
   // decrease quantity of selected book
   btnDecrease.addEventListener("click", (event) => {
     event.preventDefault();
@@ -43,9 +43,34 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   btnAddToCart.addEventListener("click", (e) => {
-    e.preventDefault();
-    modal.style.display = "block";
+      const requestData = {
+         id: bookId,
+         quantity: quantityBox.value,
+      };
+      console.log(requestData);
+
+      e.preventDefault();
+      fetch("http://localhost:8080/booksale/cart/add-to-cart", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestData) // Send requestData directly without wrapping it in another object
+      })
+      .then((res) => {
+          if (!res.ok) {
+              throw new Error("Network response was not ok.");
+          }
+          console.log(res);
+      })
+      .then((data) => {
+          modal.style.display = "block";
+      })
+      .catch((error) => {
+          console.error("Error:", error);
+      });
   });
+
 
   // Close the modal when the close button (×) is clicked
   closeModal.addEventListener("click", () => {

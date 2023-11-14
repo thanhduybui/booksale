@@ -26,10 +26,9 @@ public class CartController {
     }
 
     @PostMapping("/add-to-cart")
-    public String addToCart(@RequestParam("bookId") int id,
-                            @RequestParam("quantity") int quantity,
+    public String addToCart(@RequestBody CartRequestData requestData,
                             @ModelAttribute("cart") ShoppingCart cart){
-        CartDTO newCartItem = cartService.getBookCartItem(id, quantity);
+        CartDTO newCartItem = cartService.getBookCartItem(requestData.getId(), requestData.getQuantity());
         cart.addBook(newCartItem);
         return "redirect:/cart";
     }
