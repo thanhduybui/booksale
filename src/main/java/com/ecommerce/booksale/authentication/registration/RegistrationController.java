@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @AllArgsConstructor
 @RequestMapping("/register")
+@SessionAttributes("cart")
 public class RegistrationController {
 
     private final RegistrationService registrationService;
