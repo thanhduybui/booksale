@@ -2,7 +2,10 @@ package com.ecommerce.booksale.cart;
 
 
 import com.ecommerce.booksale.book.BookService;
+import com.ecommerce.booksale.user.address.Address;
+import com.ecommerce.booksale.user.address.AddressDTO;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +24,11 @@ public class CartController {
         return new ShoppingCart();
     }
     @GetMapping()
-    public String handleGetCart(Model model, HttpServletRequest request){
+    public String handleGetCart(Model model){
+        AddressDTO userAddress = AddressDTO.builder().build();
+
+        // Use userAddress as a model attribute for your view
+        model.addAttribute("userAddress", userAddress);
         return "cart";
     }
 
