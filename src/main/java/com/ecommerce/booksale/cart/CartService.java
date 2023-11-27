@@ -44,6 +44,7 @@ public class CartService {
                 .imgUrl(bookData.getMainImg())
                 .price(bookData.getPrice())
                 .discountPrice(bookData.getFinalPrice())
+                .availableQuantity(foundBook.getQuantity())
                 .build();
 
         return cartBook;
@@ -70,7 +71,5 @@ public class CartService {
                 .data(Map.of("address", result))
                 .build();
     }
-
-
 
 }

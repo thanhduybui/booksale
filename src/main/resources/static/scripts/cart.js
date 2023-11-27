@@ -3,12 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnIncreases = document.querySelectorAll(".btn-increase");
   const btnDeleteItems = document.querySelectorAll(".btn-detele-item");
   const checkboxes = document.querySelectorAll(".checkbox");
-    const totalPriceElement = document.querySelector(".total .money");
-    const originPriceElement = document.querySelector(".subtotal .money");
-    const dicountPriceElement = document.querySelector(".discount .money");
-    const shippingFeeElement = document.querySelector(".shipping .money");
-     const createOrderBtn = document.querySelector(".btn-order");
-      const addressForm = document.querySelector(".address-form_cart");
+  const totalPriceElement = document.querySelector(".total .money");
+  const originPriceElement = document.querySelector(".subtotal .money");
+  const dicountPriceElement = document.querySelector(".discount .money");
+  const shippingFeeElement = document.querySelector(".shipping .money");
+  const createOrderBtn = document.querySelector(".btn-order");
+  const addressForm = document.querySelector(".address-form_cart");
 
       console.log(createOrderBtn);
 
@@ -23,9 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Inside create order function");
           addressForm.submit();
         });
-
-
-
 
       // Function to update the total price based on the checkbox state
       const updateTotalPrice = () => {
@@ -95,56 +92,65 @@ document.addEventListener("DOMContentLoaded", () => {
         });
   }
 
-  // Function to get the book ID
-  function getBookId(element) {
-  console.log(element);
-    const hiddenInput = element.parentElement.querySelector(".book-id");
-    return hiddenInput.value;
-  }
+ // Function to get the book ID
+     function getBookId(element) {
+         const hiddenInput = element.parentElement.querySelector(".book-id");
+         return hiddenInput.value;
+     }
 
-  btnDeleteItems.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-        e.preventDefault();
-        console.log("Inside delete function");
-        const bookId = getBookId(e.target.parentElement);
-        deleteData(bookId);
+     // Event delegation for handling button clicks
+     document.addEventListener("click", (e) => {
+         const btn = e.target;
 
-        // Reload the window after deleting
-        window.location.reload();
-    })
-  })
+         if (btn.classList.contains("btn-decrease")) {
+             e.preventDefault();
+             const input = btn.parentElement.querySelector(".quantity-box input");
+             const availableQuantity = btn.parentElement.querySelector(".available-quantity");
 
-  btnDecreases.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      const input = e.target.parentElement.querySelector(".quantity-box input");
-      const currentValue = parseInt(input.value);
-      if (currentValue > 1) {
-        input.value = currentValue - 1;
-      }
+             const currentValue = parseInt(input.value);
+             const availableQuantityValue = parseInt(availableQuantity.value);
 
-      const id = getBookId(e.target.parentElement);
-      const quantity = input.value;
-      updateData(id, quantity);
+             const increaseButton = btn.parentElement.querySelector('.btn-increase');
+             if (currentValue < availableQuantityValue) {
+                 increaseButton.disabled = false;
+             }
 
-      updateTotalPrice();
-    });
-  });
+             if (currentValue > 1) {
+                 input.value = currentValue - 1;
+             }
 
-  btnIncreases.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      const input = e.target.parentElement.querySelector(".quantity-box input");
-      const currentValue = parseInt(input.value);
-      input.value = currentValue + 1;
+             const id = getBookId(btn.parentElement);
+             const quantity = input.value;
+             updateData(id, quantity);
 
-      const id = getBookId(e.target.parentElement);
-      const quantity = input.value;
-      updateData(id, quantity);
+             updateTotalPrice();
+         } else if (btn.classList.contains("btn-increase")) {
+             e.preventDefault();
+             const input = btn.parentElement.querySelector(".quantity-box input");
+             const availableQuantity = btn.parentElement.querySelector(".available-quantity");
 
-      updateTotalPrice();
-    });
-  });
+             const currentValue = parseInt(input.value);
+             const availableQuantityValue = parseInt(availableQuantity.value);
+
+             if (currentValue == availableQuantityValue - 1) {
+                 btn.disabled = true;
+             }
+
+             input.value = currentValue + 1;
+
+             const id = getBookId(btn.parentElement);
+             const quantity = input.value;
+             updateData(id, quantity);
+
+             updateTotalPrice();
+         } else if (btn.classList.contains("btn-detele-item")) {
+             e.preventDefault();
+             const bookId = getBookId(btn.parentElement);
+             deleteData(bookId);
+             // Reload the window after deleting
+             window.location.reload();
+         }
+     });
 
 });
 
