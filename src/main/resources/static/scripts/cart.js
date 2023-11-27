@@ -98,6 +98,18 @@ document.addEventListener("DOMContentLoaded", () => {
          return hiddenInput.value;
      }
 
+       btnDeleteItems.forEach((btn) => {
+         btn.addEventListener("click", (e) => {
+             e.preventDefault();
+             console.log("Inside delete function");
+             const bookId = getBookId(e.target.parentElement);
+             deleteData(bookId);
+
+             // Reload the window after deleting
+             window.location.reload();
+         })
+       })
+
      // Event delegation for handling button clicks
      document.addEventListener("click", (e) => {
          const btn = e.target;
@@ -143,13 +155,9 @@ document.addEventListener("DOMContentLoaded", () => {
              updateData(id, quantity);
 
              updateTotalPrice();
-         } else if (btn.classList.contains("btn-detele-item")) {
-             e.preventDefault();
-             const bookId = getBookId(btn.parentElement);
-             deleteData(bookId);
-             // Reload the window after deleting
-             window.location.reload();
          }
+
+
      });
 
 });
