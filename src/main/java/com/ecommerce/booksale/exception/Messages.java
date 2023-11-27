@@ -10,4 +10,5 @@ public interface Messages {
     public static final String SEND_EMAIL_ERROR = "Can not send email";
 
     public static final String USER_NOT_FOUND = "User with email %s not found";
+    String USER_NOT_FOUND_BY_PHONE_NUMBER = "User not found by phone number %p";
 }

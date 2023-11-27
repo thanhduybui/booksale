@@ -68,6 +68,10 @@
                     >
                         <div class="address-group">
                             <div class="form-control">
+                                <label for="phone">Số điện thoại</label>
+                                <input type="tel" id="phone" name="phone" th:field="*{userInformation.phone}" onblur="fetchUserData()" required/>
+                            </div>
+                            <div class="form-control">
                                 <label for="fullName">Họ và tên</label>
                                 <input
                                         type="text"
@@ -84,11 +88,6 @@
                                 <input type="email" id="email" name="email"
                                        th:field="*{userInformation.email}"
                                        required/>
-                            </div>
-
-                            <div class="form-control">
-                                <label for="phone">Số điện thoại</label>
-                                <input type="tel" id="phone" name="phone" th:field="*{userInformation.phone}" required/>
                             </div>
                             <div class="form-control">
                                 <label for="province">Tỉnh / Thành phố</label>
@@ -203,7 +202,6 @@
 <!-- FOOTER -->
 <footer th:replace="~{common/footer.html :: copy}">
 </footer>
-
 <script defer th:src="@{/scripts/cart.js}"></script>
 <script defer th:src="@{/scripts/user.js}"></script>
 <script

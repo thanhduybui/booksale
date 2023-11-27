@@ -24,6 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
           addressForm.submit();
         });
 
+
+
+
       // Function to update the total price based on the checkbox state
       const updateTotalPrice = () => {
         totalPrice = 0;
@@ -142,4 +145,81 @@ document.addEventListener("DOMContentLoaded", () => {
       updateTotalPrice();
     });
   });
+
 });
+
+
+const clearFormFields = () => {
+  document.getElementById('fullName').value = '';
+  document.getElementById('email').value = '';
+  document.getElementById('street').value = '';
+  document.getElementById('description').value = '';
+
+  // Clear selected options for the dropdowns
+  const provinceSelect = document.getElementById('province');
+  const districtSelect = document.getElementById('district');
+  const wardSelect = document.getElementById('ward');
+
+  provinceSelect.selectedIndex = 0; // Reset province to default option
+  districtSelect.selectedIndex = 0; // Reset district to default option
+  wardSelect.selectedIndex = 0; // Reset ward to default option
+};
+
+const fetchUserData = async () => {
+  try {
+    const phoneNumber = document.getElementById('phone').value;
+    const response = await fetch(`http://localhost:8080/booksale/api/cart/address?phone=${phoneNumber}`);
+    const responseData = await response.json();
+
+    if (responseData.code === 200) {
+      const userData = responseData.data.address.userInformation;
+
+      // Populate the form fields with received user data
+      document.getElementById('fullName').value = userData.fullName;
+      document.getElementById('email').value = userData.email;
+      document.getElementById('street').value = responseData.data.address.street;
+      document.getElementById('description').value = responseData.data.address.description;
+
+      // Set selected options for the dropdowns
+      const provinceSelect = document.getElementById('province');
+      const districtSelect = document.getElementById('district');
+      const wardSelect = document.getElementById('ward');
+
+      // Iterate through the options and set the selected attribute for the matching option in provinces
+      for (let i = 0; i < provinceSelect.options.length; i++) {
+        if (provinceSelect.options[i].textContent.trim() === responseData.data.address.province) {
+          provinceSelect.options[i].selected = true;
+          const code = provinceSelect.options[i].value;
+
+          // Fetch districts based on the selected province
+          const districtUrl = `https://provinces.open-api.vn/api/p/${code}?depth=2`;
+          await populateOptions(districtUrl, "district", "Chọn quận (huyện)");
+          break;
+        }
+      }
+
+      // Set selected option for district
+      for (let i = 0; i < districtSelect.options.length; i++) {
+        if (districtSelect.options[i].textContent === responseData.data.address.district) {
+          districtSelect.options[i].selected = true;
+          const code = districtSelect.options[i].value;
+          const apiUrl = `https://provinces.open-api.vn/api/d/${code}?depth=2`;
+          await populateOptions(apiUrl, "ward", "Chọn phường (xã)");
+          break;
+        }
+      }
+
+      // Set selected option for ward
+      for (let i = 0; i < wardSelect.options.length; i++) {
+        if (wardSelect.options[i].textContent === responseData.data.address.ward) {
+          wardSelect.options[i].selected = true;
+          break;
+        }
+      }
+    } else {
+      clearFormFields();
+    }
+  } catch (error) {
+    console.error('There was a problem fetching user data:', error);
+  }
+};
