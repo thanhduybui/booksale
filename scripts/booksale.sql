@@ -108,9 +108,9 @@ DROP TABLE IF EXISTS `Users`;
 CREATE TABLE Users (
   user_id bigint PRIMARY KEY auto_increment,
   full_name NVARCHAR(255),
-  email VARCHAR(255) unique not null,
-  password VARCHAR(255) not null,
-  phone VARCHAR(20),
+  email VARCHAR(255) unique,
+  password VARCHAR(255),
+  phone VARCHAR(20) unique,
   enable tinyint,
   is_lock tinyint
 )auto_increment=1;
@@ -183,7 +183,7 @@ CREATE TABLE address (
 
 DROP TABLE IF EXISTS `Orders`;
 CREATE TABLE Orders (
-  order_id bigint PRIMARY KEY,
+  order_id bigint PRIMARY KEY AUTO_INCREMENT,
   user_id bigint,
   order_date DATE,
   total_price DECIMAL(10, 2),
@@ -194,7 +194,7 @@ CREATE TABLE Orders (
 
 DROP TABLE IF EXISTS `Order_Items`;
 CREATE TABLE Order_Items (
-  order_item_id bigint PRIMARY KEY,
+  order_item_id bigint PRIMARY KEY AUTO_INCREMENT,
   order_id bigint,
   book_id int,
   quantity INT,
@@ -840,8 +840,7 @@ VALUE(1, 1),
 -- INSERT ADDRESS
 INSERT INTO address (province, district, ward, street, type, description, user_id)
 VALUES
-('Hà Nội', 'Quận Ba Đình', 'Phường Cống Vị', 'Đường Kim Mã', 'Nhà riêng', 'Địa chỉ số 1', 1),
-('Hồ Chí Minh', 'Quận 1', 'Phường Bến Nghé', 'Đường Đồng Khởi', 'Chung cư', 'Địa chỉ số 2', 1);
+('Thành phố Hà Nội', 'Quận Ba Đình', 'Phường Cống Vị', 'Đường Kim Mã', 'Nhà riêng', 'Địa chỉ số 1', 1),
 
 
 

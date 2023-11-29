@@ -15,12 +15,13 @@ spring:
   jpa:
     properties:
       hibernate:
+        show_sql: true
         format_sql: true
   mail:
-    host: localhost
-    port: 1025
-    username: hello
-    password: hello
+    host: smtp.gmail.com
+    port: 587
+    username: bookstoregroup174@gmail.com
+    password: gbwg pwnz fdbw lvjr
     properties:
       mail:
         smtp:
@@ -32,10 +33,13 @@ spring:
           connectiontimeout: 5000
           timeout: 3000
           writetimeout: 5000
+
 #logging:
-#   level:
-#     root: WARN
+#  level:
 #    org:
 #      hibernate:
-#        SQL: debug
-#    org.springframework.security: DEBUG
+#        SQL: DEBUG
+#        type:
+#          descriptor:
+#            sql:
+#              BasicBinder: TRACE
